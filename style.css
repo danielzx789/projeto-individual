@@ -1,0 +1,231 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #cfcfcf;
+}
+
+/* NAVBAR */
+.navbar {
+  width: 85%;
+  margin: 15px auto;
+  background: #1e4d1e;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 8px 20px;
+  border-radius: 25px;
+}
+
+.logo {
+  color: white;
+  font-size: 14px;
+}
+
+.nav-links a {
+  color: white;
+  font-size: 12px;
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+/* CONTAINER PRINCIPAL */
+main {
+  width: 70%;
+  margin: auto;
+  background: #ededed;
+  padding: 40px 0;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.hero h1 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.hero button {
+  background: #2d5fd3;
+  color: white;
+  border: none;
+  padding: 8px 30px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* TITULOS */
+section h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 18px;
+}
+
+/* CARDS */
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 60px;
+}
+
+.card {
+  background: #d9d9d9;
+  width: 160px;
+  padding: 12px;
+  text-align: center;
+}
+
+.card h3 {
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 11px;
+}
+
+/* SOBRE */
+.sobre {
+  text-align: center;
+}
+
+.sobre h3 {
+  margin: 10px 0 20px;
+  font-size: 14px;
+}
+
+.sobre p {
+  width: 60%;
+  margin: auto;
+  font-size: 12px;
+  line-height: 1.6;
+}* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #cfcfcf;
+  color: #333;
+}
+
+/* NAVBAR */
+.navbar {
+  width: 85%;
+  margin: 15px auto;
+  background: #0b3d0b;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 25px;
+  border-radius: 30px;
+}
+
+.nav-links a {
+  color: white;
+  margin-left: 15px;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+/* CONTAINER CENTRAL (ESSA ERA A PEÇA QUE FALTAVA) */
+main {
+  width: 70%;
+  margin: auto;
+  background: #ededed;
+  padding: 40px 0;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.hero h1 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 12px;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.hero button {
+  background: #2d6cdf;
+  color: white;
+  border: none;
+  padding: 8px 25px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* SECTIONS */
+section {
+  padding: 20px;
+  text-align: center;
+}
+
+section h2 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* CARDS */
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 50px;
+}
+
+.card {
+  background: #d9d9d9;
+  padding: 12px;
+  width: 160px;
+  text-align: center;
+}
+
+.card h3 {
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 11px;
+}
+
+/* SOBRE */
+.sobre h3 {
+  font-size: 14px;
+  margin: 10px 0 20px;
+}
+
+.sobre p {
+  width: 60%;
+  margin: auto;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #555;
+}
