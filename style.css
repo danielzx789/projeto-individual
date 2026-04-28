@@ -1,231 +1,391 @@
+/* =========================
+   VARIÁVEIS GLOBAIS (cores reutilizáveis)
+========================= */
+:root {
+  --color-bg: #000;                /* define cor preta para fundo do site */
+  --color-text: #fff;              /* define cor branca para textos principais */
+  --color-primary-dark: #14532d;   /* verde escuro usado na navbar e footer */
+  --color-primary: #1f7a3a;        /* verde usado nos botões */
+  --color-surface: #0f2f1f;        /* cor de fundo dos cards */
+  --color-text-muted: #ccc;        /* cinza para textos secundários */
+}
+
+
+/* =========================
+   RESET (remove padrões do navegador)
+========================= */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  margin: 0;            /* remove margens padrão de todos elementos */
+  padding: 0;           /* remove padding padrão de todos elementos */
+  box-sizing: border-box; /* faz largura/altura incluir bordas e padding */
 }
 
+
+/* =========================
+   IMAGENS
+========================= */
+img {
+  width: 100%;          /* imagem ocupa 100% da largura do container */
+  height: auto;         /* altura ajusta automaticamente proporcional */
+  display: block;       /* remove espaço branco abaixo da imagem */
+}
+
+
+/* =========================
+   BODY (estrutura geral)
+========================= */
 body {
-  background: #cfcfcf;
+  font-family: Arial, sans-serif; /* define fonte padrão */
+  background: var(--color-bg);    /* aplica cor de fundo preta */
+  color: var(--color-text);       /* aplica cor branca no texto */
 }
 
-/* NAVBAR */
+
+/* =========================
+   NAVBAR (barra superior)
+========================= */
 .navbar {
-  width: 85%;
-  margin: 15px auto;
-  background: #1e4d1e;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 8px 20px;
-  border-radius: 25px;
+  display: flex;                     /* ativa flexbox (elementos lado a lado) */
+  align-items: center;              /* alinha verticalmente ao centro */
+  justify-content: space-between;   /* separa esquerda e direita */
+  padding: 0 60px;                  /* espaço interno nas laterais */
+  height: 80px;                     /* altura fixa da navbar */
+  background: var(--color-primary-dark); /* cor verde escuro */
 }
 
+
+/* container da logo */
 .logo {
-  color: white;
-  font-size: 14px;
+  display: flex;         /* coloca imagem e texto lado a lado */
+  align-items: center;   /* alinha verticalmente */
+  gap: 10px;             /* espaço entre imagem e texto */
+  white-space: nowrap;   /* impede quebra de linha */
 }
 
+
+/* texto "Next Fret" */
+.logo span {
+  font-size: 22px;       /* tamanho do texto */
+  font-weight: bold;     /* deixa o texto em negrito */
+}
+
+
+/* imagem da logo */
+.logo img {
+  height: 150px;         /* altura da imagem (⚠ pode estourar a navbar) */
+}
+
+
+/* links da direita */
 .nav-links a {
-  color: white;
-  font-size: 12px;
-  margin-left: 15px;
-  text-decoration: none;
+  color: white;          /* cor branca */
+  margin-left: 20px;     /* espaço entre links */
+  text-decoration: none; /* remove sublinhado */
 }
 
-/* CONTAINER PRINCIPAL */
-main {
-  width: 70%;
-  margin: auto;
-  background: #ededed;
-  padding: 40px 0;
-}
 
-/* HERO */
+/* =========================
+   HERO (seção principal topo)
+========================= */
 .hero {
-  text-align: center;
-  margin-bottom: 60px;
+  height: 90vh; /* ocupa 90% da altura da tela */
+
+  background: url('imagemfundohome.png') center/cover no-repeat; 
+  /* define imagem de fundo centralizada, cobrindo toda área */
+
+  position: relative; /* necessário para posicionar overlay */
+
+  display: flex; /* ativa flexbox */
+
+  align-items: center; /* centraliza conteúdo verticalmente */
+
+  padding: 0 80px; /* espaço nas laterais */
 }
 
+
+/* camada escura sobre a imagem */
+.hero-overlay {
+  position: absolute; /* posiciona em relação ao .hero */
+
+  inset: 0; /* ocupa topo, direita, baixo e esquerda (100%) */
+
+  background: rgba(0,0,0,0.6); /* fundo preto com transparência */
+}
+
+
+/* conteúdo do hero */
+.hero-content {
+  position: relative; /* garante que fique acima do overlay */
+
+  max-width: 500px; /* limita largura do conteúdo */
+}
+
+
+/* título principal */
 .hero h1 {
-  font-size: 26px;
-  margin-bottom: 10px;
+  font-size: 48px; /* tamanho grande */
+
+  margin-bottom: 25px; /* espaço abaixo do título */
 }
 
+
+/* parágrafo */
 .hero p {
-  font-size: 12px;
-  margin-bottom: 20px;
+  color: var(--color-text-muted); /* usa cinza */
+
+  margin-bottom: 30px; /* espaço abaixo */
+
+  line-height: 1.6; /* melhora leitura (espaço entre linhas) */
 }
 
+
+/* botão dentro do hero */
 .hero button {
-  background: #2d5fd3;
-  color: white;
-  border: none;
-  padding: 8px 30px;
-  font-size: 13px;
-  cursor: pointer;
+  margin-top: 30px; /* espaço acima do botão */
 }
 
-/* TITULOS */
-section h2 {
-  text-align: center;
-  margin-bottom: 25px;
-  font-size: 18px;
+
+/* =========================
+   BOTÃO PADRÃO
+========================= */
+.btn-primary {
+  background: var(--color-primary); /* define cor verde */
+
+  border: none; /* remove borda */
+
+  padding: 15px 30px; /* espaço interno do botão */
+
+  color: white; /* texto branco */
+
+  cursor: pointer; /* cursor vira mão ao passar */
 }
 
-/* CARDS */
-.cards {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 60px;
+
+/* =========================
+   MAIN (conteúdo geral)
+========================= */
+.main {
+  padding: 80px; /* espaço interno geral */
 }
 
+
+/* =========================
+   SEÇÃO 1 (imagem + texto)
+========================= */
+.top-row {
+  display: flex; /* coloca imagem e texto lado a lado */
+
+  align-items: center; /* alinha verticalmente */
+
+  gap: 60px; /* espaço entre imagem e texto */
+
+  margin-bottom: 80px; /* espaço abaixo da seção */
+}
+
+
+/* imagem da seção */
+.top-row img {
+  width: 50%; /* ocupa metade da largura */
+
+  height: 400px; /* altura fixa */
+
+  object-fit: cover; /* corta imagem sem distorcer */
+
+  border-radius: 10px; /* cantos arredondados */
+}
+
+
+/* título da seção */
+.text-block h2 {
+  margin-bottom: 25px; /* espaço abaixo do título */
+}
+
+
+/* lista */
+.text-block ul {
+  margin-top: 15px; /* espaço acima da lista */
+}
+
+
+/* itens da lista */
+.text-block ul li {
+  margin-bottom: 12px; /* espaço entre itens */
+}
+
+
+/* =========================
+   CARDS
+========================= */
+.card-grid {
+  display: flex; /* coloca cards lado a lado */
+
+  gap: 20px; /* espaço entre cards */
+
+  margin-bottom: 80px; /* espaço abaixo */
+}
+
+
+/* card individual */
 .card {
-  background: #d9d9d9;
-  width: 160px;
-  padding: 12px;
-  text-align: center;
+  flex: 1; /* todos ocupam mesmo espaço */
+
+  background: var(--color-surface); /* cor de fundo */
+
+  padding: 30px; /* espaço interno */
+
+  text-align: center; /* centraliza texto */
+
+  border-radius: 10px; /* cantos arredondados */
 }
 
-.card h3 {
-  font-size: 13px;
-  margin-bottom: 8px;
+
+/* imagem do card */
+.card img {
+  width: 70px; /* largura fixa */
+
+  height: 70px; /* altura fixa */
+
+  object-fit: contain; /* mantém proporção */
+
+  margin: 0 auto 15px; /* centraliza + espaço abaixo */
 }
 
-.card p {
-  font-size: 11px;
+
+/* =========================
+   SEÇÃO FINAL (laptop)
+========================= */
+.bottom-row {
+  display: flex; /* layout lado a lado */
+
+  align-items: center; /* alinhamento vertical */
+
+  gap: 60px; /* espaço entre colunas */
 }
 
-/* SOBRE */
-.sobre {
-  text-align: center;
+
+/* colunas esquerda e direita */
+.col-left, .col-right {
+  width: 50%; /* cada uma ocupa metade */
 }
 
-.sobre h3 {
-  margin: 10px 0 20px;
-  font-size: 14px;
+
+/* imagem da esquerda */
+.col-left img {
+  height: 350px; /* altura fixa */
+
+  object-fit: cover; /* mantém proporção */
+
+  border-radius: 10px; /* cantos arredondados */
 }
 
-.sobre p {
-  width: 60%;
-  margin: auto;
-  font-size: 12px;
-  line-height: 1.6;
-}* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+
+/* texto acima da lista */
+.col-left p {
+  margin-top: 20px; /* espaço acima */
+
+  margin-bottom: 15px; /* espaço abaixo */
+
+  font-weight: bold; /* destaque */
 }
 
-body {
-  background: #cfcfcf;
-  color: #333;
+
+/* itens da lista */
+.col-left ul li {
+  margin-bottom: 10px; /* espaço entre itens */
 }
 
-/* NAVBAR */
-.navbar {
-  width: 85%;
-  margin: 15px auto;
-  background: #0b3d0b;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 10px 25px;
-  border-radius: 30px;
+/* título da direita */
+.col-right h2 {
+  margin-bottom: 30px; /* espaço abaixo */
 }
 
-.nav-links a {
-  color: white;
-  margin-left: 15px;
-  text-decoration: none;
-  font-size: 12px;
+
+/* parágrafos */
+.col-right p {
+  margin-bottom: 20px; /* espaço entre textos */
 }
 
-/* CONTAINER CENTRAL */
-main {
-  width: 70%;
-  margin: auto;
-  background: #ededed;
-  padding: 40px 0;
+
+/* botão */
+.col-right button {
+  margin-top: 30px; /* espaço acima */
 }
 
-/* HERO */
-.hero {
-  text-align: center;
-  margin-bottom: 60px;
+
+/* estilo padrão de parágrafo */
+p {
+  color: var(--color-text-muted); /* cor cinza */
+
+  line-height: 1.6; /* espaçamento entre linhas */
 }
 
-.hero h1 {
-  font-size: 26px;
-  margin-bottom: 10px;
+
+/* listas */
+ul {
+  margin-left: 20px; /* recuo da lista */
 }
 
-.hero p {
-  font-size: 12px;
-  margin-bottom: 20px;
-  color: #666;
+
+/* =========================
+   FOOTER
+========================= */
+.footer {
+  background: var(--color-primary-dark); /* mesma cor da navbar */
+
+  padding: 20px 60px; /* espaço interno */
 }
 
-.hero button {
-  background: #2d6cdf;
-  color: white;
-  border: none;
-  padding: 8px 25px;
-  font-size: 13px;
-  cursor: pointer;
+
+/* organização do footer */
+.footer-container {
+  display: flex; /* layout flex */
+
+  justify-content: space-between; /* separa os elementos */
+
+  align-items: center; /* centraliza verticalmente */
 }
 
-/* SECTIONS */
-section {
-  padding: 20px;
-  text-align: center;
+
+/* bloco da logo */
+.footer-logo {
+  display: flex; /* imagem e texto lado a lado */
+
+  align-items: center; /* alinha verticalmente */
+
+  white-space: nowrap; /* impede quebra de linha */
+
+  gap: 10px; /* espaço entre imagem e texto */
 }
 
-section h2 {
-  font-size: 18px;
-  margin-bottom: 20px;
+
+/* imagem da logo */
+.footer-logo img {
+  height: 80px; /* tamanho da logo */
 }
 
-/* CARDS */
-.cards {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 50px;
+
+/* texto da logo */
+.footer-logo p {
+  font-size: 18px; /* tamanho do texto */
+
+  margin: 0; /* remove margem padrão */
 }
 
-.card {
-  background: #d9d9d9;
-  padding: 12px;
-  width: 160px;
-  text-align: center;
+
+/* links */
+.footer-links a {
+  color: white; /* cor branca */
+
+  margin: 0 10px; /* espaço entre links */
+
+  text-decoration: none; /* remove sublinhado */
 }
 
-.card h3 {
-  font-size: 13px;
-  margin-bottom: 8px;
-}
 
-.card p {
-  font-size: 11px;
-}
+/* copyright */
+.footer-copy {
+  color: var(--color-text-muted); /* cor cinza */
 
-/* SOBRE */
-.sobre h3 {
-  font-size: 14px;
-  margin: 10px 0 20px;
-}
-
-.sobre p {
-  width: 60%;
-  margin: auto;
-  font-size: 12px;
-  line-height: 1.6;
-  color: #555;
+  font-size: 14px; /* tamanho pequeno */
 }
