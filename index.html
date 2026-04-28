@@ -1,81 +1,188 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!DOCTYPE html> 
+<html lang="pt-br"> 
+
 <head>
-  <meta charset="UTF-8">
-  <title>Next Fret</title>
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Next Fret</title> 
+
+  <!-- Conecta com seu CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header class="navbar">
-  <div class="logo"> Next Fret</div>
-  <div class="nav-links">
-    <a href="#">login</a>
-    <a href="#">cadastre-se</a>
+<!-- =========================
+     NAVBAR (usa .navbar do CSS)
+========================= -->
+<nav class="navbar"> <!-- conecta com .navbar -->
+
+  <div class="logo"> <!-- conecta com .logo -->
+    <img src="logoguitarra.png" alt="Logo Next Fret"> <!-- .logo img -->
+    <span>Next Fret</span> <!-- .logo span -->
   </div>
-</header>
 
-<main>
+  <div class="nav-links"> <!-- conecta com .nav-links -->
+    <a href="#">Login</a> <!-- .nav-links a -->
+    <a href="#">Cadastre-se</a>
+  </div>
 
-  <section class="hero">
-    <h1>aprenda guitarra do<br>zero com Next Fret</h1>
-    <p>Um método prático para tocar músicas completas e evoluir de verdade</p>
-    <button>começar agora</button>
-  </section>
+</nav>
 
-  <section class="problemas">
-    <h2>Você se identifica com isso?</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Não sabe por onde começar</h3>
-        <p>Mas não sabe o que realmente estudar primeiro</p>
-      </div>
 
-      <div class="card">
-        <h3>Quer aprender rápido</h3>
-        <p>Acaba pulando de conteúdo em conteúdo sem evoluir</p>
-      </div>
+<!-- =========================
+     HERO (seção principal topo)
+========================= -->
+<header class="hero"> <!-- conecta com .hero -->
 
-      <div class="card">
-        <h3>Tem medo de errar no equipamento</h3>
-        <p>E acaba gastando dinheiro em algo que não ajuda</p>
-      </div>
-    </div>
-  </section>
+  <div class="hero-overlay"></div> <!-- conecta com .hero-overlay -->
 
-  <section class="como-funciona">
-    <h2>Como funciona?</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Método Progressivo</h3>
-        <p>Aprenda passo a passo sem ficar perdido</p>
-      </div>
+  <div class="hero-content"> <!-- conecta com .hero-content -->
 
-      <div class="card">
-        <h3>Setup Inteligente</h3>
-        <p>Saiba o que comprar sem gastar dinheiro errado</p>
-      </div>
-
-      <div class="card">
-        <h3>Progresso Real</h3>
-        <p>Toque músicas completas e evolua de verdade</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="sobre">
-    <h2>Sobre</h2>
-    <h3>minha história com a música</h3>
+    <h1>Aprenda Guitarra do Zero com Next Fret</h1> <!-- .hero h1 -->
 
     <p>
-      Sou Daniel, e a música sempre fez parte da minha vida.<br><br>
-      Cresci em contato com estúdios e ensaios, mas tive meu primeiro contato formal com o piano, que apesar de importante,
-      não era o método mais intuitivo para mim.<br><br>
-      Foi através do rock que encontrei um caminho mais prático e divertido, focado em tocar músicas completas e realmente evoluir.
-    </p>
-  </section>
+      Um método prático para tocar músicas completas e evoluir de verdade
+    </p> <!-- .hero p -->
 
-</main>
+    <button class="btn-primary">Começar agora</button> <!-- .btn-primary -->
+
+  </div>
+
+</header>
+
+
+<!-- =========================
+     MAIN (conteúdo principal)
+========================= -->
+<section class="main"> <!-- conecta com .main -->
+
+  <!-- =========================
+       SEÇÃO 1 (imagem + texto)
+  ========================= -->
+  <div class="top-row"> <!-- conecta com .top-row -->
+
+    <img src="garotaviolao.png" alt="Pessoa tocando violão"> <!-- .top-row img -->
+
+    <div class="text-block"> <!-- conecta com .text-block -->
+
+      <h2>Tudo o que você precisa para aprender</h2> <!-- .text-block h2 -->
+
+      <ul> <!-- .text-block ul -->
+        <li>Explore músicas, lições e exercícios.</li>
+        <li>Aprenda com tutoriais divertidos.</li>
+        <li>Veja seu progresso em tempo real.</li>
+        <li>Escolha os melhores equipamentos.</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       CARDS (benefícios)
+  ========================= -->
+  <div class="card-grid"> <!-- conecta com .card-grid -->
+
+    <div class="card"> <!-- conecta com .card -->
+      <img src="chapeuformatura.png" alt="">
+      <h3>Método Progressivo</h3>
+      <p>Aprenda passo a passo</p>
+    </div>
+
+    <div class="card">
+      <img src="guitarradesenho.png" alt="">
+      <h3>Setup Inteligente</h3>
+      <p>Compre sem errar</p>
+    </div>
+
+    <div class="card">
+      <img src="graficodesenho.png" alt="">
+      <h3>Progresso Real</h3>
+      <p>Evolua de verdade</p>
+    </div>
+
+  </div>
+
+
+  <!-- =========================
+       SEÇÃO FINAL (laptop)
+  ========================= -->
+  <div class="bottom-row"> <!-- conecta com .bottom-row -->
+
+    <!-- coluna esquerda -->
+    <div class="col-left"> <!-- conecta com .col-left -->
+
+      <img src="laptopviolao.png" alt="Aulas online"> <!-- .col-left img -->
+
+      <p>Você vai aprender tocando músicas como:</p> <!-- .col-left p -->
+
+      <ul>
+        <li>Sultans of Swing</li>
+        <li>Purple Haze</li>
+        <li>Californication</li>
+        <li>Is this love</li>
+      </ul>
+
+    </div>
+
+    <!-- coluna direita -->
+    <div class="col-right"> <!-- conecta com .col-right -->
+
+      <h2>A melhor maneira de aprender guitarra online</h2> <!-- .col-right h2 -->
+
+      <p>
+        O Next Fret te ajuda a aprender guitarra de forma prática,
+        no seu ritmo e sem complicação.
+      </p>
+
+      <p>
+        Com um método direto ao ponto, você evolui tocando músicas reais
+        desde o começo.
+      </p>
+
+      <p>
+        As aulas são simples e focadas no que realmente importa.
+      </p>
+
+      <button class="btn-primary">Começar agora</button> <!-- .btn-primary -->
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+<footer class="footer"> <!-- conecta com .footer -->
+
+  <div class="footer-container"> <!-- conecta com .footer-container -->
+
+    <!-- logo -->
+    <div class="footer-logo"> <!-- conecta com .footer-logo -->
+      <img src="logoguitarra.png" alt="Logo">
+      <p>Next Fret</p>
+    </div>
+
+    <!-- links -->
+    <div class="footer-links"> <!-- conecta com .footer-links -->
+      <a href="#">Sobre</a>
+      <a href="#">Contato</a>
+      <a href="#">Termos</a>
+    </div>
+
+    <!-- copyright -->
+    <div class="footer-copy"> <!-- conecta com .footer-copy -->
+      <p>© 2026 Next Fret</p>
+    </div>
+
+  </div>
+
+</footer>
 
 </body>
 </html>
