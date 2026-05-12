@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Materiais de apoio - Next Fret</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
+<body>
+  <!-- Topo compacto usado nas telas internas do aluno. -->
   <nav class="navbar navbar--compact">
-    <div class="logo">
+    <a class="logo" href="dashboard.html" aria-label="Resumo do painel Next Fret">
       <img src="logoguitarra.png" alt="Logo Next Fret">
       <span>Next Fret</span>
-    </div>
+    </a>
 
-    <div class="nav-links">
+    <div class="nav-links" aria-label="Links principais do painel">
       <a href="sobre.html">Sobre nós</a>
       <a href="aulas.html">Aulas</a>
-      <a href="#">Equipamentos</a>
+      <a href="setup.html">Equipamentos</a>
     </div>
   </nav>
 
+  <!-- Tela de materiais: lista arquivos de apoio para baixar. -->
   <div class="dashboard-container">
     <aside class="sidebar">
-      <nav class="menu-lateral">
-        <a href="#">Resumo</a>
+      <nav class="menu-lateral" aria-label="Menu lateral">
+        <a href="dashboard.html">Resumo</a>
         <a href="aulas.html">Aulas</a>
         <a href="musicas.html">Músicas</a>
         <a class="active" href="materiais.html">Materiais</a>
-        <a href="#">Setup</a>
-        <a href="#">Perfil</a>
+        <a href="setup.html">Setup</a>
         <a href="index.html">Sair</a>
+
+        <div class="user-chip" aria-label="Usuário logado">
+          <span class="user-avatar" aria-hidden="true">D</span>
+          <span>Daniel</span>
+        </div>
       </nav>
     </aside>
 
@@ -38,65 +45,63 @@
       <h1>Materiais de apoio</h1>
 
       <div class="lista">
-
-        <div class="item-barra">
+        <article class="item-barra">
           <div class="item-info">
             <span class="titulo">Tabela de acordes</span>
-            <span class="subtitulo">Pdf</span>
+            <span class="subtitulo">PDF</span>
           </div>
 
-          <button class="botao-acao" type="button">
-            <img src="download.png" alt="Download">
+          <button class="botao-acao" type="button" aria-label="Baixar tabela de acordes">
+            <img src="download.png" alt="">
           </button>
-        </div>
+        </article>
 
-        <div class="item-barra">
+        <article class="item-barra">
           <div class="item-info">
             <span class="titulo">Exercícios de ritmo</span>
-            <span class="subtitulo">Pdf</span>
+            <span class="subtitulo">PDF</span>
           </div>
 
-          <button class="botao-acao" type="button">
-            <img src="download.png" alt="Download">
+          <button class="botao-acao" type="button" aria-label="Baixar exercícios de ritmo">
+            <img src="download.png" alt="">
           </button>
-        </div>
+        </article>
 
-        <div class="item-barra">
+        <article class="item-barra">
           <div class="item-info">
             <span class="titulo">Escalas básicas</span>
-            <span class="subtitulo">Pdf</span>
+            <span class="subtitulo">PDF</span>
           </div>
 
-          <button class="botao-acao" type="button">
-            <img src="download.png" alt="Download">
+          <button class="botao-acao" type="button" aria-label="Baixar escalas básicas">
+            <img src="download.png" alt="">
           </button>
-        </div>
+        </article>
 
-        <div class="item-barra">
+        <article class="item-barra">
           <div class="item-info">
             <span class="titulo">Backing tracks</span>
-            <span class="subtitulo">Pdf</span>
+            <span class="subtitulo">PDF</span>
           </div>
 
-          <button class="botao-acao" type="button">
-            <img src="download.png" alt="Download">
+          <button class="botao-acao" type="button" aria-label="Baixar backing tracks">
+            <img src="download.png" alt="">
           </button>
-        </div>
+        </article>
 
-        <div class="item-barra">
+        <article class="item-barra">
           <div class="item-info">
             <span class="titulo">Dicionário de termos</span>
-            <span class="subtitulo">Pdf</span>
+            <span class="subtitulo">PDF</span>
           </div>
 
-          <button class="botao-acao" type="button">
-            <img src="download.png" alt="Download">
+          <button class="botao-acao" type="button" aria-label="Baixar dicionário de termos">
+            <img src="download.png" alt="">
           </button>
-        </div>
-
+        </article>
       </div>
     </main>
   </div>
-
 </body>
+
 </html>
