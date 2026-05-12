@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sobre o Next Fret</title>
+  <title>Calculadora de setup - Next Fret</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,21 +17,21 @@
     </a>
 
     <div class="nav-links" aria-label="Links principais do painel">
-      <a class="active" href="sobre.html">Sobre nós</a>
+      <a href="sobre.html">Sobre nós</a>
       <a href="aulas.html">Aulas</a>
-      <a href="setup.html">Equipamentos</a>
+      <a class="active" href="setup.html">Equipamentos</a>
     </div>
   </nav>
 
-  <!-- Tela sobre: usa o mesmo menu lateral das outras paginas internas. -->
-  <div class="dashboard-container about-layout">
+  <!-- Tela de setup: calculadora visual pronta para receber JavaScript depois. -->
+  <div class="dashboard-container setup-layout">
     <aside class="sidebar">
       <nav class="menu-lateral" aria-label="Menu lateral">
         <a href="dashboard.html">Resumo</a>
         <a href="aulas.html">Aulas</a>
         <a href="musicas.html">Músicas</a>
         <a href="materiais.html">Materiais</a>
-        <a href="setup.html">Setup</a>
+        <a class="active" href="setup.html">Setup</a>
         <a href="index.html">Sair</a>
 
         <div class="user-chip" aria-label="Usuário logado">
@@ -42,28 +42,59 @@
     </aside>
 
     <main class="content">
-      <h1>Sobre o Next Fret</h1>
+      <h1>Calculadora de setup</h1>
 
-      <section class="bloco-texto">
-        <p>O Next Fret nasceu da minha própria experiência tentando aprender música.</p>
+      <section class="setup-grid" aria-label="Calculadora de setup">
+        <!-- Formulario da calculadora. Por enquanto o botao nao executa calculo. -->
+        <form class="setup-box">
+          <label for="produto">Nome do produto</label>
+          <input id="produto" name="produto" type="text" placeholder="Ex: Stratocaster">
 
-        <p>Meu primeiro contato foi com o piano, seguindo um método mais tradicional. Apesar de importante, aquilo não fazia muito sentido pra mim na prática: parecia lento, engessado e distante do que eu realmente queria, tocar músicas.</p>
+          <label for="tipo">Tipo</label>
+          <select id="tipo" name="tipo">
+            <option value="guitarra">Guitarra</option>
+            <option value="amplificador">Amplificador</option>
+            <option value="pedaleira">Pedaleira</option>
+            <option value="acessorio">Acessório</option>
+          </select>
 
-        <p>Foi com a guitarra, principalmente através do rock, que tudo mudou. Ali eu encontrei um jeito muito mais direto, divertido e motivador de aprender.</p>
+          <label for="preco">Preço</label>
+          <input id="preco" name="preco" type="number" min="0" step="0.01" placeholder="R$ 0,00">
 
-        <p>Com o tempo, percebi que o maior problema não é falta de conteúdo, é excesso e falta de direção. Muita gente quer aprender, mas acaba perdida, sem saber o que estudar, o que comprar ou como evoluir.</p>
+          <label for="orcamento">Orçamento disponível</label>
+          <input id="orcamento" name="orcamento" type="number" min="0" step="0.01" placeholder="R$ 0,00">
 
-        <p>Foi daí que surgiu o Next Fret.</p>
+          <button class="btn-primary" type="button">Adicionar item</button>
+        </form>
 
-        <p>A ideia é simples: um caminho claro, focado na prática, onde você aprende tocando de verdade. Sem complicação desnecessária, sem gastar dinheiro errado com equipamento e sem ficar travado na teoria.</p>
+        <!-- Resumo estatico da calculadora, sem JavaScript ainda. -->
+        <aside class="setup-summary" aria-label="Resumo do setup">
+          <h2>Resumo do setup</h2>
 
-        <p>Se eu tivesse tido isso quando comecei, teria evoluído muito mais rápido.</p>
+          <div class="setup-total">
+            <span>Total estimado</span>
+            <strong>R$ 0,00</strong>
+          </div>
 
-        <p>E é exatamente isso que eu quero entregar aqui.</p>
+          <div class="setup-list">
+            <div class="setup-list-item">
+              <span>Guitarra</span>
+              <strong>R$ 0,00</strong>
+            </div>
+
+            <div class="setup-list-item">
+              <span>Amplificador</span>
+              <strong>R$ 0,00</strong>
+            </div>
+
+            <div class="setup-list-item">
+              <span>Pedais e acessórios</span>
+              <strong>R$ 0,00</strong>
+            </div>
+          </div>
+        </aside>
       </section>
     </main>
-
-    <img class="img-decorativa" src="image_guitarraeamp.png" alt="Guitarra e amplificador">
   </div>
 </body>
 
