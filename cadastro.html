@@ -1,45 +1,113 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro - Next Fret</title>
+  <title>Resumo - Next Fret</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-  <nav class="navbar">
-    <div class="logo">
+<body>
+  <!-- Topo compacto usado nas telas internas do aluno. -->
+  <nav class="navbar navbar--compact">
+    <a class="logo" href="dashboard.html" aria-label="Resumo do painel Next Fret">
       <img src="logoguitarra.png" alt="Logo Next Fret">
       <span>Next Fret</span>
-    </div>
+    </a>
 
-    <div class="nav-links">
-      <a href="login.html">Login</a>
-      <a class="active" href="cadastro.html">Cadastre-se</a>
+    <div class="nav-links" aria-label="Links principais do painel">
+      <a href="sobre.html">Sobre nós</a>
+      <a href="aulas.html">Aulas</a>
+      <a href="setup.html">Equipamentos</a>
     </div>
   </nav>
 
-  <main class="auth">
-    <form class="auth-box">
-      <h2>Cadastro</h2>
+  <!-- Estrutura padrao das telas internas: menu lateral + conteudo. -->
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <nav class="menu-lateral" aria-label="Menu lateral">
+        <a class="active" href="dashboard.html">Resumo</a>
+        <a href="aulas.html">Aulas</a>
+        <a href="musicas.html">Músicas</a>
+        <a href="materiais.html">Materiais</a>
+        <a href="setup.html">Setup</a>
+        <a href="index.html">Sair</a>
 
-      <label for="nome">Nome</label>
-      <input id="nome" type="text" placeholder="Digite seu nome">
+        <div class="user-chip" aria-label="Usuário logado">
+          <span class="user-avatar" aria-hidden="true">D</span>
+          <span>Daniel</span>
+        </div>
+      </nav>
+    </aside>
 
-      <label for="email">Email</label>
-      <input id="email" type="email" placeholder="Digite seu email">
+    <main class="content">
+      <h1>Bem-vindo, Dan!</h1>
+      <p class="page-subtitle">Seu progresso</p>
 
-      <label for="senha">Senha</label>
-      <input id="senha" type="password" placeholder="Digite sua senha">
+      <!-- Cards resumem os dados principais do aluno. -->
+      <section class="summary-grid" aria-label="Resumo do progresso">
+        <article class="summary-card">
+          <h2>Aulas concluídas</h2>
 
-      <button class="btn-primary" type="submit">Cadastrar</button>
+          <ul class="check-list" id="completed-lessons-list">
+            <li>Nenhuma aula concluída</li>
+          </ul>
+        </article>
 
-      <p class="login-link">
-        Já possui uma conta? <a href="login.html">Fazer login</a>
-      </p>
-    </form>
-  </main>
+        <article class="summary-card">
+          <h2>Próxima aula</h2>
 
+          <p id="next-lesson-number">Aula 1</p>
+          <p id="next-lesson-name">Primeiros acordes e ritmo</p>
+
+          <a class="btn-secondary" href="aulas.html">Continuar aula</a>
+        </article>
+
+        <article class="summary-card">
+          <h2>Progresso geral</h2>
+
+          <div class="progress-ring" id="dashboard-progress-ring" aria-label="0 por cento concluído">
+            <span id="dashboard-progress-text">0%</span>
+          </div>
+        </article>
+      </section>
+
+      <!-- Grafico visual feito com HTML e CSS. -->
+      <section class="chart-card" aria-label="Progresso por semana">
+        <h2>Seu progresso</h2>
+
+        <div class="bar-chart">
+          <div class="bar-item">
+            <span>Semana 1</span>
+            <div class="bar-track"><div class="bar-fill w-10"></div></div>
+          </div>
+
+          <div class="bar-item">
+            <span>Semana 2</span>
+            <div class="bar-track"><div class="bar-fill w-20"></div></div>
+          </div>
+
+          <div class="bar-item">
+            <span>Semana 3</span>
+            <div class="bar-track"><div class="bar-fill w-40"></div></div>
+          </div>
+
+          <div class="bar-item">
+            <span>Semana 4</span>
+            <div class="bar-track"><div class="bar-fill w-55"></div></div>
+          </div>
+
+          <div class="bar-item">
+            <span>Semana 5</span>
+            <div class="bar-track"><div class="bar-fill w-80"></div></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
 </body>
+
 </html>
