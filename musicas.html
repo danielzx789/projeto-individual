@@ -9,89 +9,89 @@
 </head>
 
 <body>
-
+  <!-- Topo compacto usado nas telas internas do aluno. -->
   <nav class="navbar navbar--compact">
-    <div class="logo">
+    <a class="logo" href="dashboard.html" aria-label="Resumo do painel Next Fret">
       <img src="logoguitarra.png" alt="Logo Next Fret">
       <span>Next Fret</span>
-    </div>
+    </a>
 
-    <div class="nav-links">
+    <div class="nav-links" aria-label="Links principais do painel">
       <a href="sobre.html">Sobre nós</a>
       <a href="aulas.html">Aulas</a>
       <a href="setup.html">Equipamentos</a>
     </div>
   </nav>
 
+  <!-- Tela de musicas: lista repertorios com nivel de dificuldade. -->
   <div class="dashboard-container">
     <aside class="sidebar">
-      <nav class="menu-lateral">
-        <a href="#">Resumo</a>
+      <nav class="menu-lateral" aria-label="Menu lateral">
+        <a href="dashboard.html">Resumo</a>
         <a href="aulas.html">Aulas</a>
         <a class="active" href="musicas.html">Músicas</a>
         <a href="materiais.html">Materiais</a>
         <a href="setup.html">Setup</a>
-        <a href="#">Perfil</a>
         <a href="index.html">Sair</a>
+
+        <div class="user-chip" aria-label="Usuário logado">
+          <span class="user-avatar" aria-hidden="true">D</span>
+          <span>Daniel</span>
+        </div>
       </nav>
     </aside>
 
     <main class="content">
-      <section class="painel-secao">
-        <h2>Músicas</h2>
+      <h1>Músicas</h1>
 
-        <div class="lista">
-
-          <div class="item-barra">
-            <div class="item-info-row">
-              <span class="seta-v">&gt;</span>
-              <span class="titulo">Ain't Talking About Love - Van Halen</span>
-            </div>
-
-            <span class="badge badge-medio">Médio</span>
+      <div class="lista">
+        <article class="item-barra">
+          <div class="item-info-row">
+            <span class="seta-v">&gt;</span>
+            <span class="titulo">Ain't Talking About Love - Van Halen</span>
           </div>
 
-          <div class="item-barra">
-            <div class="item-info-row">
-              <span class="seta-v">&gt;</span>
-              <span class="titulo">Sultans of Swing - Dire Straits</span>
-            </div>
+          <button class="badge badge-medio" type="button">Médio</button>
+        </article>
 
-            <span class="badge badge-medio">Médio</span>
+        <article class="item-barra">
+          <div class="item-info-row">
+            <span class="seta-v">&gt;</span>
+            <span class="titulo">Sultans of Swing - Dire Straits</span>
           </div>
 
-          <div class="item-barra">
-            <div class="item-info-row">
-              <span class="seta-v">&gt;</span>
-              <span class="titulo">Highway Star - Deep Purple</span>
-            </div>
+          <button class="badge badge-medio" type="button">Médio</button>
+        </article>
 
-            <span class="badge badge-dificil">Difícil</span>
+        <article class="item-barra">
+          <div class="item-info-row">
+            <span class="seta-v">&gt;</span>
+            <span class="titulo">Highway Star - Deep Purple</span>
           </div>
 
-          <div class="item-barra">
-            <div class="item-info-row">
-              <span class="seta-v">&gt;</span>
-              <span class="titulo">Paranoid - Black Sabbath</span>
-            </div>
+          <button class="badge badge-dificil" type="button">Difícil</button>
+        </article>
 
-            <span class="badge badge-facil">Fácil</span>
+        <article class="item-barra">
+          <div class="item-info-row">
+            <span class="seta-v">&gt;</span>
+            <span class="titulo">Paranoid - Black Sabbath</span>
           </div>
 
-          <div class="item-barra">
-            <div class="item-info-row">
-              <span class="seta-v">&gt;</span>
-              <span class="titulo">Cliffs of Dover - Eric Johnson</span>
-            </div>
+          <button class="badge badge-facil" type="button">Fácil</button>
+        </article>
 
-            <span class="badge badge-dificil">Difícil</span>
+        <article class="item-barra">
+          <div class="item-info-row">
+            <span class="seta-v">&gt;</span>
+            <span class="titulo">Cliffs of Dover - Eric Johnson</span>
           </div>
 
-        </div>
-      </section>
+          <button class="badge badge-dificil" type="button">Difícil</button>
+        </article>
+      </div>
     </main>
   </div>
-
 </body>
 
 </html>
