@@ -1,802 +1,1001 @@
-/* =========================
+/* 
+   NEXT FRET - CSS ÚNICO
+   Este arquivo controla todas as páginas do site.
+   Os nomes das classes e variáveis estão em inglês para manter um padrão mais profissional.
+   Os comentários estão em português para facilitar o entendimento e a revisão.
+ */
+
+/* 
    CORES DO SITE
-   Somente cores ficam em variaveis.
-========================= */
+   Todas as variáveis começam com --color porque guardam cores.
+   O nome depois de --color explica a função daquela cor no layout.
+ */
 :root {
-  --cor-fundo: #000000;
-  --cor-texto: #ffffff;
-  --cor-texto-suave: #cfcfcf;
-  --cor-verde-escuro: #14532d;
-  --cor-verde-principal: #1f7a3a;
-  --cor-verde-hover: #239447;
-  --cor-card: #0f2f1f;
-  --cor-lista: #081404;
-  --cor-controle: #12240a;
-  --cor-sucesso: #00ff66;
-  --cor-alerta: #ffb020;
-  --cor-perigo: #ff4d4d;
-  --cor-overlay-forte: rgba(0, 0, 0, 0.7);
-  --cor-overlay-medio: rgba(0, 0, 0, 0.6);
-  --cor-input-transparente: rgba(255, 255, 255, 0.18);
-  --cor-input-claro: #dddddd;
+  --color-background: #000000; /* Fundo principal do site inteiro. */
+  --color-surface: #06110b; /* Fundo secundário para áreas grandes, caso precise separar seções. */
+  --color-card: #0d2015; /* Fundo usado em cards e blocos destacados. */
+  --color-list: #081404; /* Fundo usado em listas, barras de aulas, músicas e materiais. */
+  --color-control: #12240a; /* Fundo usado em controles pequenos, badges e botões de ação. */
+  --color-text: #ffffff; /* Cor principal dos textos. */
+  --color-text-soft: #cfcfcf; /* Cor de textos secundários, como parágrafos e subtítulos. */
+  --color-border: rgba(255, 255, 255, 0.12); /* Cor de bordas suaves sobre fundos escuros. */
+  --color-dark-green: #14532d; /* Verde escuro usado em navbar, footer e sidebar. */
+  --color-main-green: #1f7a3a; /* Verde principal usado em botões e destaques. */
+  --color-hover-green: #239447; /* Verde usado quando o mouse passa por cima de botões. */
+  --color-success: #00ff66; /* Cor para sucesso, concluído ou progresso positivo. */
+  --color-warning: #ffb020; /* Cor para avisos ou dificuldade média. */
+  --color-danger: #ff4d4d; /* Cor para erro, perigo ou dificuldade alta. */
+  --color-overlay-strong: rgba(0, 0, 0, 0.72); /* Camada escura forte sobre imagens de fundo. */
+  --color-overlay-medium: rgba(0, 0, 0, 0.62); /* Camada escura média para caixas translúcidas. */
+  --color-transparent-input: rgba(255, 255, 255, 0.18); /* Fundo transparente para inputs em fundos escuros. */
+  --color-light-input: #dddddd; /* Fundo claro para inputs da calculadora de setup. */
 }
 
-/* =========================
-   BASE
-========================= */
+/* 
+   ELEMENTOS BASE
+   Regras aplicadas ao site inteiro.
+ */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin: 0; /* Remove o espaçamento externo padrão dos navegadores. */
+  padding: 0; /* Remove o espaçamento interno padrão dos navegadores. */
+  box-sizing: border-box; /* Faz largura e altura incluírem padding e borda. */
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /* Faz a rolagem da página ficar suave ao clicar em links internos. */
 }
 
 body {
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
-  background: var(--cor-fundo);
-  color: var(--cor-texto);
+  min-height: 100vh; /* Faz o body ocupar pelo menos a altura inteira da tela. */
+  font-family: Arial, Helvetica, sans-serif; /* Define a fonte principal do site. */
+  background: var(--color-background); /* Usa a cor de fundo principal. */
+  color: var(--color-text); /* Usa a cor principal dos textos. */
 }
 
 img {
-  display: block;
-  max-width: 100%;
-  height: auto;
+  display: block; /* Remove o pequeno espaço que imagens têm quando ficam como inline. */
+  max-width: 100%; /* Impede a imagem de passar da largura do elemento pai. */
+  height: auto; /* Mantém a proporção original da imagem. */
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+  color: inherit; /* Faz o link herdar a cor do elemento pai. */
+  text-decoration: none; /* Remove o sublinhado padrão dos links. */
 }
 
 p {
-  color: var(--cor-texto-suave);
-  line-height: 1.6;
+  color: var(--color-text-soft); /* Usa uma cor mais suave para parágrafos. */
+  line-height: 1.6; /* Aumenta o espaçamento entre linhas para melhorar a leitura. */
 }
 
 ul {
-  margin-left: 20px;
+  margin-left: 20px; /* Mantém as listas com recuo para os marcadores aparecerem bem. */
 }
 
 button,
-input {
-  font: inherit;
+input,
+select {
+  font: inherit; /* Faz botões, inputs e selects usarem a mesma fonte do site. */
 }
 
 button {
-  cursor: pointer;
+  cursor: pointer; /* Mostra a mãozinha ao passar o mouse sobre botões. */
 }
 
-/* =========================
-   TOPO / NAVBAR
-========================= */
+/* 
+   NAVBAR
+   Barra de navegação superior usada nas páginas.
+ */
 .navbar {
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 0 clamp(20px, 5vw, 60px);
-  background: var(--cor-verde-escuro);
+  min-height: 80px; /* Define a altura mínima da navbar principal. */
+  display: flex; /* Coloca logo e links lado a lado. */
+  align-items: center; /* Centraliza os itens verticalmente. */
+  justify-content: space-between; /* Deixa logo de um lado e links do outro. */
+  gap: 20px; /* Cria espaço entre os grupos da navbar. */
+  padding: 0 clamp(20px, 5vw, 60px); /* Cria espaçamento lateral responsivo. */
+  background: var(--color-dark-green); /* Usa verde escuro no fundo da navbar. */
 }
 
 .navbar--compact {
-  height: 60px;
+  min-height: 60px; /* Versão menor da navbar para telas internas. */
 }
 
-.logo,
-.logo-area {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  white-space: nowrap;
+.logo {
+  display: flex; /* Coloca imagem e texto da logo lado a lado. */
+  align-items: center; /* Centraliza imagem e texto verticalmente. */
+  gap: 10px; /* Espaço entre imagem da logo e texto. */
+  white-space: nowrap; /* Impede o texto da logo de quebrar linha. */
 }
 
-.logo img,
-.logo-area img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
+.logo img {
+  width: 92px; /* Largura da logo na navbar principal. */
+  height: 72px; /* Altura da logo na navbar principal. */
+  object-fit: contain; /* Mostra a imagem inteira sem cortar. */
 }
 
-.navbar--compact .logo img,
-.navbar--compact .logo-area img {
-  width: 52px;
-  height: 52px;
+.navbar--compact .logo img {
+  width: 52px; /* Largura da logo na navbar compacta. */
+  height: 52px; /* Altura da logo na navbar compacta. */
 }
 
-.logo span,
-.logo-area span {
-  color: var(--cor-texto);
-  font-size: 22px;
-  font-weight: 700;
+.logo span {
+  color: var(--color-text); /* Cor do texto da logo. */
+  font-size: 22px; /* Tamanho do texto da logo. */
+  font-weight: 700; /* Deixa o texto da logo em negrito. */
 }
 
-.navbar--compact .logo span,
-.navbar--compact .logo-area span {
-  font-size: 20px;
+.navbar--compact .logo span {
+  font-size: 20px; /* Reduz um pouco o texto da logo na navbar compacta. */
 }
 
-.nav-links,
-.links-topo {
-  display: flex;
-  align-items: center;
-  gap: clamp(14px, 3vw, 30px);
+.nav-links {
+  display: flex; /* Coloca os links lado a lado. */
+  align-items: center; /* Centraliza os links verticalmente. */
+  gap: clamp(14px, 3vw, 30px); /* Espaçamento responsivo entre os links. */
 }
 
-.nav-links a,
-.links-topo a {
-  color: var(--cor-texto-suave);
-  font-size: 14px;
-  transition: color 0.2s ease, opacity 0.2s ease;
+.nav-links a {
+  color: var(--color-text-soft); /* Deixa os links mais suaves por padrão. */
+  font-size: 14px; /* Tamanho dos links da navbar. */
+  transition: color 0.2s ease; /* Suaviza a mudança de cor no hover. */
 }
 
 .nav-links a:hover,
-.links-topo a:hover,
-.nav-links a.active,
-.links-topo a.active {
-  color: var(--cor-texto);
+.nav-links a.active {
+  color: var(--color-text); /* Destaca o link quando passa o mouse ou está ativo. */
 }
 
-/* =========================
-   BOTAO PADRAO
-========================= */
-.btn-primary {
-  min-height: 48px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 30px;
-  border: 0;
-  border-radius: 999px;
-  background: var(--cor-verde-principal);
-  color: var(--cor-texto);
-  font-weight: 700;
-  transition: background 0.2s ease, transform 0.2s ease;
+/* 
+   BOTÕES
+   Estilos compartilhados entre botões principais, secundários e de assistir.
+ */
+.btn-primary,
+.btn-secondary,
+.btn-assistir {
+  min-height: 44px; /* Altura mínima para o botão ficar fácil de clicar. */
+  display: inline-flex; /* Permite centralizar o conteúdo dentro do botão. */
+  align-items: center; /* Centraliza o conteúdo verticalmente. */
+  justify-content: center; /* Centraliza o conteúdo horizontalmente. */
+  padding: 0 24px; /* Espaçamento lateral interno do botão. */
+  border: 0; /* Remove a borda padrão do botão. */
+  border-radius: 8px; /* Arredonda os cantos do botão. */
+  background: var(--color-main-green); /* Usa o verde principal como fundo. */
+  color: var(--color-text); /* Usa texto branco no botão. */
+  font-weight: 700; /* Deixa o texto do botão em negrito. */
+  transition: background 0.2s ease, transform 0.2s ease; /* Suaviza cor e movimento no hover. */
 }
 
-.btn-primary:hover {
-  background: var(--cor-verde-hover);
-  transform: translateY(-1px);
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-assistir:hover {
+  background: var(--color-hover-green); /* Muda para verde mais claro no hover. */
+  transform: translateY(-1px); /* Sobe o botão levemente no hover. */
 }
 
-/* =========================
+.btn-secondary {
+  margin-top: 18px; /* Cria espaço acima do botão secundário. */
+  background: #173c25; /* Usa um verde mais fechado no botão secundário. */
+}
+
+/* 
    HOME
-========================= */
+   Estrutura da página inicial.
+ */
 .hero {
-  min-height: calc(90vh - 80px);
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding: 80px clamp(24px, 7vw, 80px);
-  background: url("imagemfundohome.png") center / cover no-repeat;
+  min-height: calc(90vh - 80px); /* Faz o hero ocupar quase a tela toda, descontando a navbar. */
+  position: relative; /* Permite posicionar o overlay dentro do hero. */
+  display: flex; /* Facilita o alinhamento do conteúdo. */
+  align-items: center; /* Centraliza o conteúdo verticalmente. */
+  padding: 80px clamp(24px, 7vw, 80px); /* Espaçamento interno responsivo. */
+  background: url("imagemfundohome.png") center / cover no-repeat; /* Imagem de fundo da home. */
 }
 
 .hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: var(--cor-overlay-forte);
+  position: absolute; /* Coloca o overlay por cima da imagem. */
+  inset: 0; /* Faz o overlay ocupar todo o hero. */
+  background: var(--color-overlay-strong); /* Escurece a imagem para melhorar a leitura. */
 }
 
 .hero-content {
-  position: relative;
-  z-index: 1;
-  max-width: 560px;
+  position: relative; /* Mantém o conteúdo acima do overlay. */
+  z-index: 1; /* Garante que o texto apareça por cima da camada escura. */
+  max-width: 560px; /* Limita a largura do texto para leitura melhor. */
 }
 
 .hero h1 {
-  margin-bottom: 24px;
-  font-size: clamp(36px, 6vw, 56px);
-  line-height: 1.08;
+  margin-bottom: 24px; /* Espaço abaixo do título principal. */
+  font-size: clamp(36px, 6vw, 56px); /* Título responsivo com tamanho mínimo e máximo. */
+  line-height: 1.08; /* Deixa as linhas do título mais próximas. */
 }
 
 .hero p {
-  max-width: 460px;
-  margin-bottom: 30px;
-  font-size: 18px;
+  max-width: 460px; /* Limita a largura do parágrafo. */
+  margin-bottom: 30px; /* Espaço abaixo do parágrafo. */
+  font-size: 18px; /* Tamanho do texto do parágrafo do hero. */
 }
 
 .main {
-  width: min(100%, 1120px);
-  margin: 0 auto;
-  padding: 80px clamp(24px, 5vw, 40px);
+  width: min(100%, 1120px); /* Ocupa 100% até o limite máximo de 1120px. */
+  margin: 0 auto; /* Centraliza o conteúdo na página. */
+  padding: 80px clamp(24px, 5vw, 40px); /* Espaçamento interno responsivo. */
 }
 
 .top-row,
 .bottom-row {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: center;
-  gap: clamp(32px, 6vw, 60px);
-  margin-bottom: 80px;
+  display: grid; /* Usa grid para dividir o conteúdo em colunas. */
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* Cria duas colunas iguais. */
+  align-items: center; /* Centraliza verticalmente o conteúdo das colunas. */
+  gap: clamp(32px, 6vw, 60px); /* Espaço responsivo entre as colunas. */
+  margin-bottom: 80px; /* Espaço abaixo de cada linha. */
 }
 
 .top-row img,
 .col-left img {
-  width: 100%;
-  height: 360px;
-  object-fit: cover;
-  border-radius: 10px;
+  width: 100%; /* Faz a imagem ocupar toda a largura da coluna. */
+  height: 360px; /* Define uma altura fixa para manter o layout alinhado. */
+  object-fit: cover; /* Corta a imagem de forma proporcional para preencher o espaço. */
+  border-radius: 8px; /* Arredonda os cantos da imagem. */
 }
 
 .text-block h2,
 .col-right h2 {
-  margin-bottom: 24px;
-  font-size: clamp(28px, 4vw, 36px);
+  margin-bottom: 24px; /* Espaço abaixo dos subtítulos. */
+  font-size: clamp(28px, 4vw, 36px); /* Subtítulo responsivo. */
 }
 
 .text-block li,
 .col-left li {
-  margin-bottom: 12px;
+  margin-bottom: 12px; /* Espaço entre itens da lista. */
 }
 
 .card-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-  margin-bottom: 80px;
+  display: grid; /* Usa grid para organizar os cards. */
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* Cria três colunas iguais. */
+  gap: 20px; /* Espaço entre cards. */
+  margin-bottom: 80px; /* Espaço abaixo da área de cards. */
 }
 
 .card {
-  min-height: 190px;
-  padding: 30px;
-  text-align: center;
-  border-radius: 10px;
-  background: var(--cor-card);
+  min-height: 190px; /* Altura mínima para deixar os cards equilibrados. */
+  padding: 30px; /* Espaçamento interno do card. */
+  text-align: center; /* Centraliza o conteúdo textual do card. */
+  border-radius: 8px; /* Arredonda os cantos do card. */
+  background: var(--color-card); /* Usa a cor de fundo dos cards. */
 }
 
 .card img {
-  width: 70px;
-  height: 70px;
-  object-fit: contain;
-  margin: 0 auto 15px;
+  width: 70px; /* Largura da imagem ou ícone do card. */
+  height: 70px; /* Altura da imagem ou ícone do card. */
+  object-fit: contain; /* Mostra a imagem inteira sem cortar. */
+  margin: 0 auto 15px; /* Centraliza a imagem e cria espaço abaixo. */
 }
 
 .card h3 {
-  margin-bottom: 8px;
+  margin-bottom: 8px; /* Espaço abaixo do título do card. */
 }
 
 .col-left,
 .col-right {
-  min-width: 0;
+  min-width: 0; /* Evita que o conteúdo estoure a coluna no grid. */
 }
 
 .col-left p {
-  margin-top: 20px;
-  margin-bottom: 15px;
-  font-weight: 700;
+  margin-top: 20px; /* Espaço acima do parágrafo. */
+  margin-bottom: 15px; /* Espaço abaixo do parágrafo. */
+  font-weight: 700; /* Deixa esse parágrafo em negrito. */
 }
 
 .col-right p {
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* Espaço abaixo dos parágrafos da coluna direita. */
 }
 
 .col-right .btn-primary {
-  margin-top: 10px;
+  margin-top: 10px; /* Espaço acima do botão dentro da coluna direita. */
 }
 
-/* =========================
-   RODAPE
-========================= */
+/* 
+   FOOTER
+   Rodapé da página.
+ */
 .footer {
-  padding: 20px clamp(24px, 5vw, 60px);
-  background: var(--cor-verde-escuro);
+  padding: 20px clamp(24px, 5vw, 60px); /* Espaçamento interno responsivo do rodapé. */
+  background: var(--color-dark-green); /* Usa verde escuro no fundo do rodapé. */
 }
 
 .footer-container {
-  width: min(100%, 1120px);
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+  width: min(100%, 1120px); /* Alinha o rodapé com a largura do conteúdo principal. */
+  margin: 0 auto; /* Centraliza o conteúdo do rodapé. */
+  display: flex; /* Coloca os elementos do rodapé lado a lado. */
+  align-items: center; /* Centraliza os itens verticalmente. */
+  justify-content: space-between; /* Distribui os grupos do rodapé. */
+  gap: 20px; /* Espaço entre os grupos do rodapé. */
 }
 
 .footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  white-space: nowrap;
+  display: flex; /* Coloca imagem e texto da logo lado a lado. */
+  align-items: center; /* Centraliza imagem e texto verticalmente. */
+  gap: 10px; /* Espaço entre imagem e texto. */
+  white-space: nowrap; /* Impede quebra no texto da logo. */
 }
 
 .footer-logo img {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
+  width: 60px; /* Largura da logo no rodapé. */
+  height: 60px; /* Altura da logo no rodapé. */
+  object-fit: contain; /* Mostra a imagem inteira sem cortar. */
 }
 
 .footer-logo p {
-  margin: 0;
-  color: var(--cor-texto);
-  font-size: 18px;
-  font-weight: 700;
+  margin: 0; /* Remove margem padrão do parágrafo. */
+  color: var(--color-text); /* Usa texto principal. */
+  font-size: 18px; /* Tamanho do texto da logo no rodapé. */
+  font-weight: 700; /* Deixa o texto em negrito. */
 }
 
 .footer-links {
-  display: flex;
-  gap: 20px;
+  display: flex; /* Coloca os links do rodapé lado a lado. */
+  gap: 20px; /* Espaço entre links. */
 }
 
 .footer-links a {
-  color: var(--cor-texto-suave);
+  color: var(--color-text-soft); /* Deixa links do rodapé mais suaves. */
 }
 
 .footer-links a:hover {
-  color: var(--cor-texto);
+  color: var(--color-text); /* Destaca o link no hover. */
 }
 
 .footer-copy {
-  color: var(--cor-texto-suave);
-  font-size: 14px;
+  color: var(--color-text-soft); /* Cor suave para o copyright. */
+  font-size: 14px; /* Tamanho menor para o copyright. */
 }
 
-/* =========================
+/* 
    LOGIN E CADASTRO
-========================= */
+   Telas com formulário sobre imagem de fundo.
+ */
 .auth {
-  min-height: calc(100vh - 80px);
-  display: flex;
-  align-items: center;
-  padding: 40px clamp(24px, 8vw, 120px);
-  background: url("backgroundcadastroelogin.png") center / cover no-repeat;
+  min-height: calc(100vh - 80px); /* Ocupa a tela abaixo da navbar. */
+  display: flex; /* Permite alinhar a caixa de login/cadastro. */
+  align-items: center; /* Centraliza a caixa verticalmente. */
+  padding: 40px clamp(24px, 8vw, 120px); /* Espaçamento responsivo da tela. */
+  background: url("backgroundcadastroelogin.png") center / cover no-repeat; /* Imagem de fundo do login/cadastro. */
 }
 
 .auth-box {
-  width: min(100%, 360px);
-  padding: 40px;
-  border-radius: 10px;
-  background: var(--cor-overlay-medio);
-  backdrop-filter: blur(5px);
+  width: min(100%, 380px); /* Formulário responsivo com limite de largura. */
+  padding: 40px; /* Espaçamento interno da caixa. */
+  border-radius: 8px; /* Arredonda os cantos da caixa. */
+  background: var(--color-overlay-medium); /* Fundo escuro translúcido da caixa. */
+  backdrop-filter: blur(5px); /* Aplica desfoque no fundo atrás da caixa. */
 }
 
-.auth-box h2 {
-  margin-bottom: 24px;
-  font-size: 32px;
+.auth-box h1 {
+  margin-bottom: 24px; /* Espaço abaixo do título do formulário. */
+  font-size: 32px; /* Tamanho do título. */
 }
 
 .auth-box label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 700;
+  display: block; /* Faz o label ocupar uma linha inteira. */
+  margin-bottom: 6px; /* Espaço entre label e input. */
+  font-weight: 700; /* Deixa o label em negrito. */
 }
 
 .auth-box input {
-  width: 100%;
-  min-height: 44px;
-  margin-bottom: 16px;
-  padding: 0 12px;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  outline: 0;
-  background: var(--cor-input-transparente);
-  color: var(--cor-texto);
+  width: 100%; /* Input ocupa toda a largura da caixa. */
+  min-height: 44px; /* Altura mínima confortável para clicar. */
+  margin-bottom: 16px; /* Espaço abaixo de cada input. */
+  padding: 0 12px; /* Espaço interno lateral do input. */
+  border: 1px solid transparent; /* Reserva espaço para borda no foco. */
+  border-radius: 8px; /* Arredonda os cantos do input. */
+  outline: 0; /* Remove o contorno padrão do navegador. */
+  background: var(--color-transparent-input); /* Fundo translúcido do input. */
+  color: var(--color-text); /* Cor do texto digitado. */
 }
 
 .auth-box input::placeholder {
-  color: var(--cor-texto-suave);
+  color: var(--color-text-soft); /* Cor do texto de exemplo dentro do input. */
 }
 
 .auth-box input:focus {
-  border-color: var(--cor-verde-principal);
+  border-color: var(--color-main-green); /* Borda verde quando o input está selecionado. */
 }
 
 .auth-box .btn-primary {
-  width: 100%;
-  margin-top: 4px;
+  width: 100%; /* Botão ocupa toda a largura do formulário. */
+  margin-top: 4px; /* Pequeno espaço acima do botão. */
 }
 
 .login-link {
-  margin-top: 14px;
-  color: var(--cor-texto-suave);
-  font-size: 13px;
+  margin-top: 14px; /* Espaço acima do link de login/cadastro. */
+  color: var(--color-text-soft); /* Cor suave para o texto auxiliar. */
+  font-size: 13px; /* Texto menor para informação secundária. */
 }
 
 .login-link a {
-  color: var(--cor-texto);
-  text-decoration: underline;
+  color: var(--color-text); /* Destaca o link dentro do texto auxiliar. */
+  text-decoration: underline; /* Sublinha para mostrar que é clicável. */
 }
 
-/* =========================
+/* 
    PAINEL INTERNO
-   Aulas, materiais, musicas e sobre.
-========================= */
-.dashboard-container,
-.container {
-  display: flex;
-  min-height: calc(100vh - 60px);
+   Base usada em dashboard, aulas, músicas, materiais, setup e sobre.
+ */
+.dashboard-container {
+  display: flex; /* Coloca sidebar e conteúdo lado a lado. */
+  min-height: calc(100vh - 60px); /* Ocupa a tela abaixo da navbar compacta. */
 }
 
 .sidebar {
-  width: 220px;
-  flex-shrink: 0;
-  padding: 40px 0;
-  background: var(--cor-verde-escuro);
+  width: 220px; /* Largura fixa da sidebar no desktop. */
+  flex-shrink: 0; /* Impede a sidebar de encolher. */
+  padding: 40px 0; /* Espaçamento vertical interno da sidebar. */
+  background: var(--color-dark-green); /* Fundo verde escuro da sidebar. */
 }
 
-.sidebar nav,
 .menu-lateral {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
+  display: flex; /* Permite organizar os links em coluna. */
+  flex-direction: column; /* Coloca os links um embaixo do outro. */
+  gap: 22px; /* Espaço entre links da sidebar. */
 }
 
 .sidebar a {
-  display: block;
-  padding: 0 40px;
-  color: var(--cor-texto);
-  font-size: 18px;
-  font-weight: 700;
-  transition: color 0.2s ease, opacity 0.2s ease;
+  display: block; /* Faz o link ocupar uma área clicável maior. */
+  padding: 0 40px; /* Espaçamento lateral dos links. */
+  color: var(--color-text); /* Cor dos links da sidebar. */
+  font-size: 18px; /* Tamanho dos links. */
+  font-weight: 700; /* Links em negrito. */
+  transition: color 0.2s ease; /* Suaviza a troca de cor. */
 }
 
 .sidebar a:hover,
 .sidebar a.active {
-  color: var(--cor-sucesso);
+  color: var(--color-success); /* Verde de destaque no hover ou link ativo. */
+}
+
+.user-chip {
+  display: flex; /* Coloca avatar e nome lado a lado. */
+  align-items: center; /* Centraliza avatar e nome verticalmente. */
+  gap: 12px; /* Espaço entre avatar e nome. */
+  margin: 4px 24px 0; /* Posiciona o chip dentro da sidebar. */
+  padding: 12px 16px; /* Espaçamento interno do chip. */
+  border: 1px solid var(--color-border); /* Borda discreta no chip. */
+  border-radius: 8px; /* Arredonda os cantos do chip. */
+  background: rgba(0, 0, 0, 0.18); /* Fundo levemente escuro para destacar o chip. */
+  color: var(--color-text); /* Cor do texto no chip. */
+  font-size: 18px; /* Tamanho do nome do usuário. */
+  font-weight: 700; /* Nome do usuário em negrito. */
+}
+
+.user-avatar {
+  width: 34px; /* Largura do avatar. */
+  height: 34px; /* Altura do avatar. */
+  display: inline-flex; /* Permite centralizar o conteúdo dentro do avatar. */
+  align-items: center; /* Centraliza verticalmente o texto do avatar. */
+  justify-content: center; /* Centraliza horizontalmente o texto do avatar. */
+  flex-shrink: 0; /* Impede o avatar de encolher. */
+  border-radius: 50%; /* Transforma o avatar em círculo. */
+  background: var(--color-success); /* Fundo verde do avatar. */
+  color: var(--color-background); /* Texto escuro dentro do avatar. */
+  font-size: 16px; /* Tamanho do texto do avatar. */
+  font-weight: 700; /* Texto do avatar em negrito. */
 }
 
 .content {
-  flex: 1;
-  min-width: 0;
-  padding: 60px clamp(24px, 6vw, 80px);
+  flex: 1; /* Faz o conteúdo ocupar o espaço restante. */
+  min-width: 0; /* Evita estouro de largura dentro do flex. */
+  padding: 60px clamp(24px, 6vw, 80px); /* Espaçamento interno responsivo. */
 }
 
-.content h1,
-.painel-secao h2 {
-  margin-bottom: 36px;
-  font-size: 32px;
-  font-weight: 400;
+.content h1 {
+  margin-bottom: 34px; /* Espaço abaixo do título da página. */
+  font-size: 32px; /* Tamanho do título principal interno. */
+  font-weight: 400; /* Peso mais leve para o título. */
 }
 
-.lista,
-.panel-list {
-  width: min(100%, 820px);
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+.page-subtitle {
+  margin-top: -22px; /* Aproxima o subtítulo do título principal. */
+  margin-bottom: 34px; /* Espaço abaixo do subtítulo. */
+  font-size: 28px; /* Tamanho do subtítulo. */
+  color: var(--color-text); /* Cor principal do texto. */
 }
 
-.item-barra,
-.list-item {
-  min-height: 76px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 18px 26px;
-  background: var(--cor-lista);
+/* 
+   LISTAS INTERNAS
+   Usadas em aulas, músicas e materiais.
+ */
+.lista {
+  width: min(100%, 850px); /* Lista responsiva com largura máxima. */
+  display: flex; /* Permite empilhar os itens. */
+  flex-direction: column; /* Coloca os itens um embaixo do outro. */
+  gap: 15px; /* Espaço entre itens da lista. */
 }
 
-.item-info,
-.item-esq.coluna {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.item-barra {
+  min-height: 76px; /* Altura mínima de cada barra da lista. */
+  display: flex; /* Coloca informações e ações lado a lado. */
+  align-items: center; /* Centraliza o conteúdo verticalmente. */
+  justify-content: space-between; /* Separa texto à esquerda e ações à direita. */
+  gap: 20px; /* Espaço entre informações e ações. */
+  padding: 18px 26px; /* Espaçamento interno da barra. */
+  border: 1px solid var(--color-border); /* Borda discreta da barra. */
+  border-radius: 8px; /* Arredonda os cantos da barra. */
+  background: var(--color-list); /* Fundo da barra da lista. */
 }
 
-.item-info-row,
-.item-esq {
-  min-width: 0;
-  display: flex;
-  align-items: center;
-  gap: 16px;
+.item-info {
+  display: flex; /* Organiza título e subtítulo. */
+  flex-direction: column; /* Coloca título e subtítulo em coluna. */
+  gap: 4px; /* Pequeno espaço entre título e subtítulo. */
 }
 
-.seta-v,
-.seta-verde {
-  color: var(--cor-sucesso);
-  font-size: 24px;
-  font-weight: 700;
+.item-info-row {
+  min-width: 0; /* Ajuda textos longos a não estourarem o layout. */
+  display: flex; /* Coloca indicador e título lado a lado. */
+  align-items: center; /* Centraliza indicador e título verticalmente. */
+  gap: 16px; /* Espaço entre indicador e título. */
 }
 
-.titulo,
-.titulo-item,
-.item-esq span:last-child {
-  color: var(--cor-texto);
-  font-size: 20px;
-  font-weight: 700;
+.seta-v {
+  color: var(--color-success); /* Verde para o indicador visual. */
+  font-size: 24px; /* Tamanho maior para o indicador. */
+  font-weight: 700; /* Indicador em negrito. */
 }
 
-.subtitulo,
-.sub-item {
-  color: var(--cor-texto-suave);
-  font-size: 15px;
+.titulo {
+  color: var(--color-text); /* Cor principal para títulos de itens. */
+  font-size: 20px; /* Tamanho do título do item. */
+  font-weight: 700; /* Título em negrito. */
+}
+
+.subtitulo {
+  color: var(--color-text-soft); /* Cor suave para subtítulos. */
+  font-size: 15px; /* Tamanho do subtítulo. */
 }
 
 .status-badge,
-.status-box,
 .badge,
 .botao-acao,
-.btn-assistir,
-.botao-download,
-.btn-download {
-  min-width: 136px;
-  min-height: 42px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 8px 18px;
-  border: 0;
-  background: var(--cor-controle);
-  color: var(--cor-texto);
-  font-size: 15px;
-  font-weight: 700;
+.lesson-link,
+.lesson-toggle {
+  min-width: 136px; /* Largura mínima dos controles. */
+  min-height: 42px; /* Altura mínima dos controles. */
+  display: inline-flex; /* Permite centralizar conteúdo dentro do controle. */
+  align-items: center; /* Centraliza verticalmente o conteúdo. */
+  justify-content: center; /* Centraliza horizontalmente o conteúdo. */
+  gap: 10px; /* Espaço entre texto e ícone. */
+  padding: 8px 18px; /* Espaçamento interno dos controles. */
+  border: 0; /* Remove borda padrão. */
+  border-radius: 8px; /* Arredonda os cantos. */
+  background: var(--color-control); /* Fundo padrão dos controles. */
+  color: var(--color-text); /* Cor do texto dos controles. */
+  font-size: 15px; /* Tamanho do texto dos controles. */
+  font-weight: 700; /* Texto dos controles em negrito. */
+  transition: background 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, transform 0.2s ease; /* Suaviza interações. */
 }
 
-.status-badge img,
-.status-box img,
-.badge img {
-  width: 16px;
-  height: 16px;
-  object-fit: contain;
+.status-badge img {
+  width: 16px; /* Largura do ícone do status. */
+  height: 16px; /* Altura do ícone do status. */
+  object-fit: contain; /* Mostra o ícone inteiro sem cortar. */
 }
 
-.botao-acao img,
-.botao-download img,
-.btn-download img {
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
+.item-actions {
+  display: flex; /* Coloca as ações lado a lado. */
+  align-items: center; /* Centraliza as ações verticalmente. */
+  justify-content: flex-end; /* Alinha as ações à direita. */
+  gap: 12px; /* Espaço entre botões de ação. */
+  flex-shrink: 0; /* Impede que os botões encolham demais. */
+}
+
+.lesson-link {
+  min-width: 112px; /* Link de aula um pouco menor que os badges. */
+  background: #173c25; /* Fundo verde escuro específico do link de aula. */
+}
+
+.botao-acao img {
+  width: 28px; /* Largura do ícone do botão de ação. */
+  height: 28px; /* Altura do ícone do botão de ação. */
+  object-fit: contain; /* Mantém o ícone inteiro visível. */
 }
 
 .concluido,
-.badge-concluido,
 .badge-facil {
-  color: var(--cor-sucesso);
+  color: var(--color-success); /* Verde para concluído ou fácil. */
 }
 
 .badge-medio {
-  color: var(--cor-alerta);
+  color: var(--color-warning); /* Laranja para dificuldade média. */
 }
 
 .badge-dificil {
-  color: var(--cor-perigo);
+  color: var(--color-danger); /* Vermelho para dificuldade difícil. */
 }
 
-/* =========================
+.lesson-toggle {
+  min-width: 170px; /* Botão maior para caber textos como marcar concluído. */
+}
+
+.lesson-toggle:hover,
+.lesson-link:hover,
+.botao-acao:hover,
+.badge:hover {
+  background: #173b21; /* Escurece o controle no hover. */
+  transform: translateY(-1px); /* Sobe levemente no hover. */
+}
+
+.lesson-toggle.is-completed {
+  color: var(--color-success); /* Deixa o texto verde quando a aula está concluída. */
+  box-shadow: inset 0 0 0 1px rgba(0, 255, 102, 0.45); /* Adiciona borda interna verde. */
+}
+
+.lesson-toggle.is-completed::before {
+  content: "\2713"; /* Insere um check antes do texto. */
+}
+
+/* 
+   DASHBOARD / RESUMO
+   Cards e gráficos de progresso.
+ */
+.summary-grid {
+  display: grid; /* Organiza os cards do resumo em grid. */
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* Cria três colunas iguais no desktop. */
+  gap: 22px; /* Espaço entre cards. */
+  margin-bottom: 34px; /* Espaço abaixo do grid. */
+}
+
+.summary-card,
+.chart-card {
+  border: 1px solid var(--color-border); /* Borda suave nos cards. */
+  border-radius: 8px; /* Arredonda os cantos dos cards. */
+  background: var(--color-card); /* Fundo dos cards. */
+}
+
+.summary-card {
+  min-height: 180px; /* Altura mínima dos cards de resumo. */
+  padding: 24px; /* Espaçamento interno dos cards. */
+}
+
+.summary-card h2,
+.chart-card h2,
+.setup-summary h2 {
+  margin-bottom: 18px; /* Espaço abaixo dos títulos dos cards. */
+  font-size: 22px; /* Tamanho dos títulos dos cards. */
+  font-weight: 700; /* Títulos em negrito. */
+}
+
+.check-list {
+  margin-left: 0; /* Remove recuo padrão da lista. */
+  list-style: none; /* Remove marcadores padrão. */
+}
+
+.check-list li {
+  margin-bottom: 10px; /* Espaço entre itens da checklist. */
+  color: var(--color-text-soft); /* Cor suave para os itens. */
+}
+
+.check-list li::before {
+  content: "\2713"; /* Coloca um check antes de cada item. */
+  margin-right: 8px; /* Espaço entre o check e o texto. */
+  color: var(--color-success); /* Cor verde para o check. */
+}
+
+.progress-ring {
+  --progress-percent: 0%; /* Valor padrão do progresso circular. */
+  width: 118px; /* Largura do círculo. */
+  height: 118px; /* Altura do círculo. */
+  display: grid; /* Permite centralizar o texto interno. */
+  place-items: center; /* Centraliza o conteúdo no meio do círculo. */
+  margin: 10px auto 0; /* Centraliza o círculo e cria espaço acima. */
+  border-radius: 50%; /* Transforma o elemento em círculo. */
+  background: conic-gradient(var(--color-success) 0 var(--progress-percent), #d9d9d9 var(--progress-percent) 100%); /* Cria o efeito de progresso circular. */
+}
+
+.progress-ring span {
+  width: 78px; /* Largura do círculo interno. */
+  height: 78px; /* Altura do círculo interno. */
+  display: grid; /* Permite centralizar o número. */
+  place-items: center; /* Centraliza o número. */
+  border-radius: 50%; /* Mantém o círculo interno redondo. */
+  background: var(--color-card); /* Fundo interno igual ao card. */
+  color: var(--color-text); /* Cor do número. */
+  font-size: 22px; /* Tamanho do número. */
+  font-weight: 700; /* Número em negrito. */
+}
+
+.chart-card {
+  width: min(100%, 930px); /* Card do gráfico responsivo com largura máxima. */
+  padding: 24px; /* Espaçamento interno do card do gráfico. */
+}
+
+.bar-chart {
+  display: flex; /* Organiza as barras em coluna. */
+  flex-direction: column; /* Coloca uma barra embaixo da outra. */
+  gap: 14px; /* Espaço entre barras. */
+}
+
+.bar-item {
+  display: grid; /* Divide cada linha em texto e barra. */
+  grid-template-columns: 90px 1fr; /* Texto com largura fixa e barra ocupando o restante. */
+  align-items: center; /* Centraliza texto e barra verticalmente. */
+  gap: 14px; /* Espaço entre texto e barra. */
+}
+
+.bar-item span {
+  color: var(--color-text-soft); /* Cor suave para o rótulo da barra. */
+  font-size: 14px; /* Tamanho do rótulo. */
+}
+
+.bar-track {
+  height: 14px; /* Altura da barra de fundo. */
+  overflow: hidden; /* Impede o preenchimento de passar dos cantos arredondados. */
+  border-radius: 999px; /* Deixa a barra bem arredondada. */
+  background: rgba(255, 255, 255, 0.12); /* Fundo claro e discreto da barra. */
+}
+
+.bar-fill {
+  height: 100%; /* Faz o preenchimento ocupar toda a altura da barra. */
+  border-radius: inherit; /* Herda o arredondamento da barra de fundo. */
+  background: var(--color-success); /* Cor verde do progresso. */
+}
+
+.w-10 {
+  width: 10%; /* Largura de 10% para progresso. */
+}
+
+.w-20 {
+  width: 20%; /* Largura de 20% para progresso. */
+}
+
+.w-40 {
+  width: 40%; /* Largura de 40% para progresso. */
+}
+
+.w-55 {
+  width: 55%; /* Largura de 55% para progresso. */
+}
+
+.w-80 {
+  width: 80%; /* Largura de 80% para progresso. */
+}
+
+/* 
    SOBRE
-========================= */
+   Página institucional com texto e imagem decorativa.
+ */
 .about-layout {
-  position: relative;
-  overflow: hidden;
+  position: relative; /* Permite posicionar a imagem decorativa dentro da área. */
+  overflow: hidden; /* Esconde qualquer parte da imagem que passe do limite. */
 }
 
 .bloco-texto {
-  width: min(100%, 620px);
-  padding: 40px;
-  border-radius: 10px;
-  background: var(--cor-lista);
-  font-size: 15px;
+  width: min(100%, 650px); /* Bloco responsivo com largura máxima. */
+  padding: 36px; /* Espaçamento interno do bloco de texto. */
+  border: 1px solid var(--color-border); /* Borda discreta do bloco. */
+  border-radius: 8px; /* Arredonda os cantos do bloco. */
+  background: var(--color-list); /* Fundo do bloco de texto. */
+  font-size: 15px; /* Tamanho do texto institucional. */
 }
 
 .bloco-texto p {
-  margin-bottom: 18px;
+  margin-bottom: 18px; /* Espaço entre parágrafos. */
 }
 
 .bloco-texto p:last-child {
-  margin-bottom: 0;
+  margin-bottom: 0; /* Remove espaço extra no último parágrafo. */
 }
 
 .img-decorativa {
-  position: absolute;
-  right: 50px;
-  bottom: 0;
-  width: min(32vw, 350px);
-  z-index: 0;
-  pointer-events: none;
+  position: absolute; /* Posiciona a imagem decorativa livremente. */
+  right: 50px; /* Distância da imagem até a direita. */
+  bottom: 0; /* Encosta a imagem na parte de baixo. */
+  width: min(32vw, 350px); /* Largura responsiva da imagem. */
+  z-index: 0; /* Mantém a imagem atrás do conteúdo. */
+  pointer-events: none; /* Impede que a imagem atrapalhe cliques. */
 }
 
 .about-layout .content {
-  position: relative;
-  z-index: 1;
+  position: relative; /* Permite controlar a camada do conteúdo. */
+  z-index: 1; /* Deixa o conteúdo acima da imagem decorativa. */
 }
 
-/* =========================
+/* 
    CALCULADORA DE SETUP
-========================= */
-.setup-page {
-  min-height: 100vh;
-  background: url("night.png") center / cover no-repeat fixed;
+   Página para calcular ou mostrar custos de equipamentos.
+ */
+.setup-layout {
+  background:
+    linear-gradient(var(--color-overlay-strong), var(--color-overlay-strong)),
+    url("night.png") center / cover no-repeat fixed; /* Fundo com imagem e camada escura por cima. */
 }
 
-.setup-page::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  background: var(--cor-overlay-forte);
+.setup-grid {
+  width: min(100%, 950px); /* Área responsiva com largura máxima. */
+  display: grid; /* Divide formulário e resumo em colunas. */
+  grid-template-columns: minmax(280px, 500px) minmax(240px, 360px); /* Define largura flexível para formulário e resumo. */
+  gap: 24px; /* Espaço entre formulário e resumo. */
+  align-items: start; /* Alinha as colunas pelo topo. */
 }
 
-.setup-page .navbar,
-.setup-main {
-  position: relative;
-  z-index: 1;
+.setup-box,
+.setup-summary {
+  border: 1px solid var(--color-border); /* Borda discreta nos painéis. */
+  border-radius: 8px; /* Arredonda os cantos dos painéis. */
+  background: var(--color-list); /* Fundo dos painéis. */
 }
 
-.setup-page .navbar {
-  background: linear-gradient(to right, var(--cor-verde-escuro), #0a2a15);
+.setup-box {
+  display: flex; /* Organiza o formulário. */
+  flex-direction: column; /* Coloca campos um embaixo do outro. */
+  padding: 30px; /* Espaçamento interno do formulário. */
 }
 
-.setup-main {
-  min-height: calc(100vh - 60px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 24px;
+.setup-box label {
+  margin-bottom: 6px; /* Espaço entre label e campo. */
+  font-size: 14px; /* Tamanho do label. */
+  font-weight: 700; /* Label em negrito. */
 }
 
-.setup-card {
-  width: min(100%, 500px);
+.setup-box input,
+.setup-box select {
+  width: 100%; /* Campos ocupam toda a largura do formulário. */
+  min-height: 44px; /* Altura mínima confortável. */
+  margin-bottom: 16px; /* Espaço abaixo de cada campo. */
+  padding: 0 12px; /* Espaçamento lateral interno. */
+  border: 0; /* Remove borda padrão. */
+  border-radius: 8px; /* Arredonda os cantos dos campos. */
+  outline: 0; /* Remove contorno padrão do navegador. */
+  background: var(--color-light-input); /* Fundo claro dos campos. */
+  color: var(--color-background); /* Texto escuro para contrastar com o fundo claro. */
 }
 
-.setup-card h1 {
-  margin-bottom: 40px;
-  text-align: center;
-  font-size: 28px;
-  font-weight: 700;
+.setup-box input:focus,
+.setup-box select:focus {
+  box-shadow: 0 0 0 2px var(--color-main-green); /* Cria contorno verde quando selecionado. */
 }
 
-.setup-form {
-  display: flex;
-  flex-direction: column;
+.setup-box .btn-primary {
+  width: 100%; /* Botão ocupa toda a largura do formulário. */
+  margin-top: 8px; /* Espaço acima do botão. */
 }
 
-.setup-form label {
-  margin-bottom: 5px;
-  font-size: 14px;
-  font-weight: 700;
+.setup-summary {
+  padding: 26px; /* Espaçamento interno do resumo. */
 }
 
-.setup-form input {
-  min-height: 42px;
-  margin-bottom: 15px;
-  padding: 0 12px;
-  border: 0;
-  border-radius: 8px;
-  outline: 0;
-  background: var(--cor-input-claro);
-  color: var(--cor-fundo);
+.setup-total {
+  display: flex; /* Coloca texto e valor lado a lado. */
+  align-items: center; /* Centraliza verticalmente. */
+  justify-content: space-between; /* Joga texto para esquerda e valor para direita. */
+  gap: 18px; /* Espaço entre texto e valor. */
+  margin-bottom: 24px; /* Espaço abaixo do total. */
+  padding-bottom: 18px; /* Espaço acima da linha divisória. */
+  border-bottom: 1px solid var(--color-border); /* Linha divisória abaixo do total. */
 }
 
-.setup-form input:focus {
-  box-shadow: 0 0 0 2px var(--cor-verde-principal);
+.setup-total span,
+.setup-list-item span {
+  color: var(--color-text-soft); /* Cor suave para textos secundários do resumo. */
 }
 
-.setup-form .btn-primary {
-  width: 100%;
-  margin-top: 10px;
-  border-radius: 8px;
+.setup-total strong {
+  color: var(--color-success); /* Destaca o total em verde. */
+  font-size: 24px; /* Deixa o total maior. */
 }
 
-/* =========================
+.setup-list {
+  display: flex; /* Organiza os itens do resumo. */
+  flex-direction: column; /* Coloca os itens um embaixo do outro. */
+  gap: 12px; /* Espaço entre itens. */
+}
+
+.setup-list-item {
+  display: flex; /* Coloca nome e valor lado a lado. */
+  align-items: center; /* Centraliza verticalmente. */
+  justify-content: space-between; /* Separa nome e valor. */
+  gap: 18px; /* Espaço entre nome e valor. */
+  padding: 14px; /* Espaçamento interno do item. */
+  border-radius: 8px; /* Arredonda os cantos do item. */
+  background: rgba(255, 255, 255, 0.06); /* Fundo discreto para separar cada item. */
+}
+
+.setup-list-item strong {
+  color: var(--color-text); /* Cor principal para valores. */
+  white-space: nowrap; /* Impede o valor de quebrar linha. */
+}
+
+/* 
    RESPONSIVO
-========================= */
-@media (max-width: 900px) {
+   Ajustes para tablets e celulares.
+ */
+@media (max-width: 980px) {
   .top-row,
   .bottom-row,
-  .card-grid {
-    grid-template-columns: 1fr;
+  .card-grid,
+  .summary-grid,
+  .setup-grid {
+    grid-template-columns: 1fr; /* Transforma layouts com várias colunas em uma coluna. */
   }
 
-  .dashboard-container,
-  .container {
-    flex-direction: column;
+  .dashboard-container {
+    flex-direction: column; /* Coloca sidebar acima do conteúdo em telas menores. */
   }
 
   .sidebar {
-    width: 100%;
-    padding: 20px 0;
+    width: 100%; /* Sidebar ocupa toda a largura. */
+    padding: 16px 0; /* Reduz o espaçamento vertical da sidebar. */
   }
 
-  .sidebar nav,
   .menu-lateral {
-    gap: 0;
+    gap: 0; /* Remove espaço extra entre links no responsivo. */
   }
 
   .sidebar a {
-    padding: 10px 24px;
+    padding: 10px 24px; /* Ajusta o espaçamento dos links em telas menores. */
   }
 
   .img-decorativa {
-    opacity: 0.25;
+    opacity: 0.25; /* Deixa a imagem decorativa mais suave em telas menores. */
   }
 }
 
 @media (max-width: 640px) {
   .navbar {
-    height: auto;
-    min-height: 80px;
-    flex-direction: column;
-    justify-content: center;
-    padding: 18px 20px;
+    min-height: 80px; /* Mantém altura suficiente para logo e links empilhados. */
+    flex-direction: column; /* Coloca logo e links um embaixo do outro. */
+    justify-content: center; /* Centraliza o conteúdo da navbar. */
+    padding: 18px 20px; /* Ajusta o espaçamento da navbar no celular. */
   }
 
   .navbar--compact {
-    min-height: 60px;
+    min-height: 64px; /* Mantém a navbar compacta menor no celular. */
   }
 
-  .nav-links,
-  .links-topo {
-    flex-wrap: wrap;
-    justify-content: center;
+  .nav-links {
+    flex-wrap: wrap; /* Permite que os links quebrem linha. */
+    justify-content: center; /* Centraliza os links no celular. */
   }
 
   .hero {
-    min-height: 72vh;
-    padding: 60px 24px;
+    min-height: 72vh; /* Reduz a altura do hero no celular. */
+    padding: 60px 24px; /* Ajusta o espaçamento interno do hero. */
   }
 
   .main,
   .content {
-    padding: 48px 24px;
+    padding: 48px 24px; /* Reduz o espaçamento lateral em telas pequenas. */
   }
 
   .top-row img,
   .col-left img {
-    height: 260px;
+    height: 260px; /* Reduz a altura das imagens no celular. */
   }
 
-  .item-barra,
-  .list-item {
-    align-items: flex-start;
-    flex-direction: column;
+  .item-barra {
+    align-items: flex-start; /* Alinha o conteúdo da lista à esquerda. */
+    flex-direction: column; /* Coloca texto e ações um embaixo do outro. */
   }
 
   .status-badge,
-  .status-box,
   .badge,
   .botao-acao,
-  .btn-assistir,
-  .botao-download,
-  .btn-download {
-    width: 100%;
+  .lesson-link,
+  .lesson-toggle,
+  .btn-assistir {
+    width: 100%; /* Controles ocupam toda a largura no celular. */
+  }
+
+  .item-actions {
+    width: 100%; /* Grupo de ações ocupa toda a largura. */
+    flex-direction: column; /* Empilha botões de ação no celular. */
+  }
+
+  .bar-item {
+    grid-template-columns: 1fr; /* Coloca o rótulo acima da barra. */
+    gap: 6px; /* Reduz o espaço entre rótulo e barra. */
   }
 
   .footer-container {
-    flex-direction: column;
-    text-align: center;
+    flex-direction: column; /* Empilha os elementos do rodapé. */
+    text-align: center; /* Centraliza o texto do rodapé. */
   }
-}
-/* =========================
-   SETUP (VERSÃO INTEGRADA)
-========================= */
-.setup-box {
-  width: min(100%, 500px);
-  padding: 30px;
-  border-radius: 10px;
-  background: var(--cor-lista);
-}
-
-.setup-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.setup-form label {
-  margin-bottom: 5px;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.setup-form input {
-  min-height: 42px;
-  margin-bottom: 15px;
-  padding: 0 12px;
-  border: 0;
-  border-radius: 8px;
-  outline: 0;
-  background: var(--cor-input-claro);
-  color: var(--cor-fundo);
-}
-
-.setup-form input:focus {
-  box-shadow: 0 0 0 2px var(--cor-verde-principal);
-}
-
-.setup-form .btn-primary {
-  margin-top: 10px;
-  border-radius: 8px;
 }
