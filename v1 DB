@@ -1,59 +1,49 @@
 CREATE DATABASE guitarra_db;
 USE guitarra_db;
 
--- ======================
--- USUÁRIOS (auto-relacionamento)
--- ======================
 CREATE TABLE usuarios (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  nome VARCHAR(100) NOT NULL,
-  email VARCHAR(150) NOT NULL UNIQUE,
-  senha VARCHAR(255) NOT NULL,
-  tipo ENUM('aluno','admin') DEFAULT 'aluno',
-  indicado_por INT NULL,
-  criado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (indicado_por) REFERENCES usuarios(id)
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    tipo VARCHAR(10) DEFAULT 'aluno',
+    indicado_por INT NULL,
+    criado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT chk_tipo_usuario CHECK (tipo IN ('aluno', 'admin')),
+    CONSTRAINT fk_usuario_indicador FOREIGN KEY (indicado_por) REFERENCES usuarios(id)
 );
 
--- ======================
--- CURSOS
--- ======================
+
 CREATE TABLE cursos (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  titulo VARCHAR(150) NOT NULL,
-  descricao TEXT
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(150) NOT NULL,
+    descricao TEXT
 );
 
--- ======================
--- AULAS (1:N)
--- ======================
 CREATE TABLE aulas (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  curso_id INT NOT NULL,
-  titulo VARCHAR(150) NOT NULL,
-  video_url VARCHAR(255),
-  ordem INT,
-  FOREIGN KEY (curso_id) REFERENCES cursos(id)
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    curso_id INT NOT NULL,
+    titulo VARCHAR(150) NOT NULL,
+    video_url VARCHAR(255),
+    ordem INT,
+    CONSTRAINT fk_aula_curso FOREIGN KEY (curso_id) REFERENCES cursos(id)
 );
 
--- ======================
--- PROGRESSO (N:N)
--- ======================
 CREATE TABLE progresso (
-  usuario_id INT,
-  aula_id INT,
-  concluida TINYINT DEFAULT 0,
-  PRIMARY KEY (usuario_id, aula_id),
-  FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
-  FOREIGN KEY (aula_id) REFERENCES aulas(id)
+    usuario_id INT NOT NULL,
+    aula_id INT NOT NULL,
+    data_conclusao DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (usuario_id, aula_id),
+    CONSTRAINT fk_progresso_usuario FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+    CONSTRAINT fk_progresso_aula FOREIGN KEY (aula_id) REFERENCES aulas(id)
 );
 
--- ======================
--- CERTIFICADOS (1:1)
--- ======================
 CREATE TABLE certificados (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  usuario_id INT UNIQUE,
-  data_emissao DATETIME,
-  FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    curso_id INT NOT NULL,
+    codigo_autenticidade VARCHAR(50) UNIQUE,
+    data_emissao DATETIME DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_cert_usuario FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
+    CONSTRAINT fk_cert_curso FOREIGN KEY (curso_id) REFERENCES cursos(id)
 );
