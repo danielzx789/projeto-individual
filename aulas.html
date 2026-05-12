@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Todas as aulas - Next Fret</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
+<body>
+  <!-- Topo compacto usado nas telas internas do aluno. -->
   <nav class="navbar navbar--compact">
-    <div class="logo">
+    <a class="logo" href="dashboard.html" aria-label="Resumo do painel Next Fret">
       <img src="logoguitarra.png" alt="Logo Next Fret">
       <span>Next Fret</span>
-    </div>
+    </a>
 
-    <div class="nav-links">
+    <div class="nav-links" aria-label="Links principais do painel">
       <a href="sobre.html">Sobre nós</a>
       <a class="active" href="aulas.html">Aulas</a>
-      <a href="#">Equipamentos</a>
+      <a href="setup.html">Equipamentos</a>
     </div>
   </nav>
 
+  <!-- Tela de aulas: lista cada aula e seu estado atual. -->
   <div class="dashboard-container">
     <aside class="sidebar">
-      <nav class="menu-lateral">
-        <a href="#">Resumo</a>
+      <nav class="menu-lateral" aria-label="Menu lateral">
+        <a href="dashboard.html">Resumo</a>
         <a class="active" href="aulas.html">Aulas</a>
         <a href="musicas.html">Músicas</a>
         <a href="materiais.html">Materiais</a>
-        <a href="#">Setup</a>
-        <a href="#">Perfil</a>
+        <a href="setup.html">Setup</a>
         <a href="index.html">Sair</a>
+
+        <div class="user-chip" aria-label="Usuário logado">
+          <span class="user-avatar" aria-hidden="true">D</span>
+          <span>Daniel</span>
+        </div>
       </nav>
     </aside>
 
@@ -38,64 +45,85 @@
       <h1>Todas as aulas</h1>
 
       <div class="lista">
-
-        <div class="item-barra">
+        <article class="item-barra">
           <div class="item-info-row">
             <span class="seta-v">&gt;</span>
             <span class="titulo">Aula 1 - Primeiros acordes e ritmo</span>
           </div>
 
-          <div class="status-badge concluido">
-            <img src="check.png" alt="">
-            Concluído
-          </div>
-        </div>
+          <div class="item-actions">
+            <a class="lesson-link" href="#" target="_blank" rel="noopener">Abrir aula</a>
 
-        <div class="item-barra">
+            <button class="lesson-toggle" type="button" data-lesson-id="1" data-lesson-title="Aula 1 - Primeiros acordes e ritmo" aria-pressed="false">
+              Marcar concluído
+            </button>
+          </div>
+        </article>
+
+        <article class="item-barra">
           <div class="item-info-row">
             <span class="seta-v">&gt;</span>
             <span class="titulo">Aula 2 - Mudança de acordes</span>
           </div>
 
-          <div class="status-badge concluido">
-            <img src="check.png" alt="">
-            Concluído
-          </div>
-        </div>
+          <div class="item-actions">
+            <a class="lesson-link" href="#" target="_blank" rel="noopener">Abrir aula</a>
 
-        <div class="item-barra">
+            <button class="lesson-toggle" type="button" data-lesson-id="2" data-lesson-title="Aula 2 - Mudança de acordes" aria-pressed="false">
+              Marcar concluído
+            </button>
+          </div>
+        </article>
+
+        <article class="item-barra">
           <div class="item-info-row">
             <span class="seta-v">&gt;</span>
             <span class="titulo">Aula 3 - Primeira música</span>
           </div>
 
-          <div class="status-badge concluido">
-            <img src="check.png" alt="">
-            Concluído
-          </div>
-        </div>
+          <div class="item-actions">
+            <a class="lesson-link" href="#" target="_blank" rel="noopener">Abrir aula</a>
 
-        <div class="item-barra">
+            <button class="lesson-toggle" type="button" data-lesson-id="3" data-lesson-title="Aula 3 - Primeira música" aria-pressed="false">
+              Marcar concluído
+            </button>
+          </div>
+        </article>
+
+        <article class="item-barra">
           <div class="item-info-row">
             <span class="seta-v">&gt;</span>
             <span class="titulo">Aula 4 - Acordes básicos parte 2</span>
           </div>
 
-          <button class="btn-assistir" type="button">Assistir</button>
-        </div>
+          <div class="item-actions">
+            <a class="lesson-link" href="#" target="_blank" rel="noopener">Abrir aula</a>
 
-        <div class="item-barra">
+            <button class="lesson-toggle" type="button" data-lesson-id="4" data-lesson-title="Aula 4 - Acordes básicos parte 2" aria-pressed="false">
+              Marcar concluído
+            </button>
+          </div>
+        </article>
+
+        <article class="item-barra">
           <div class="item-info-row">
             <span class="seta-v">&gt;</span>
             <span class="titulo">Aula 5 - Batidas</span>
           </div>
 
-          <button class="btn-assistir" type="button">Assistir</button>
-        </div>
+          <div class="item-actions">
+            <a class="lesson-link" href="#" target="_blank" rel="noopener">Abrir aula</a>
 
+            <button class="lesson-toggle" type="button" data-lesson-id="5" data-lesson-title="Aula 5 - Batidas" aria-pressed="false">
+              Marcar concluído
+            </button>
+          </div>
+        </article>
       </div>
     </main>
   </div>
 
+  <script src="script.js"></script>
 </body>
+
 </html>
