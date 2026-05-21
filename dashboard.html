@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - Next Fret</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/sessao.js"></script>
+</head>
+
+<body onload="validarSessao(), carregarDashboard()">
+<nav class="navbar navbar--mini">
+<a class="logo" href="dashboard.html">
+<span class="logo-image"></span>
+<span class="logo-text">Next Fret</span>
+</a>
+
+<div class="navbar-links">
+<a href="sobre.html">Sobre nós</a>
+<a href="aulas.html">Aulas</a>
+<a href="setup.html">Equipamentos</a>
+</div>
+</nav>
+
+<div class="dashboard-container">
+<aside class="sidebar">
+<nav class="menu-lateral">
+<a class="active" href="dashboard.html">Resumo</a>
+<a href="aulas.html">Aulas</a>
+<a href="musicas.html">Músicas</a>
+<a href="materiais.html">Materiais</a>
+<a href="setup.html">Setup</a>
+<a href="#" onclick="limparSessao()">Sair</a>
+
+<div class="user-block">
+<span class="user-avatar">D</span>
+<span id="b_usuario">Daniel</span>
+</div>
+</nav>
+</aside>
+
+<main class="content dashboard-content">
+<div class="dashboard-title">
+<h1>Bem vindo, <span id="nome_dashboard">aluno</span>!</h1>
+<p>seu progresso:</p>
+</div>
+
+<section class="dashboard-grid">
+<article class="summary-card summary-card--completed">
+<h2>Aulas concluídas</h2>
+
+<ul id="lista_aulas_concluidas" class="check-list">
+<li>Carregando...</li>
+</ul>
+</article>
+
+<article class="summary-card summary-card--next">
+<h2>Próxima aula</h2>
+
+<span id="proxima_aula_numero" class="lesson-number">Aula 1</span>
+<p id="proxima_aula_titulo">Carregando...</p>
+
+    <a class="dashboard-icon-link" href="aulas.html"></a>
+    <a class="dashboard-arrow-link" href="aulas.html">&gt;</a>
+    </article>
+
+<article class="summary-card summary-card--progress">
+<h2>Progresso geral</h2>
+
+<div class="dashboard-pie-area">
+<canvas id="grafico_pizza"></canvas>
+</div>
+</article>
+
+<article class="summary-card summary-card--continue">
+<h2>Continue aprendendo</h2>
+
+<span class="lesson-number">Aulas</span>
+<p>Acesse a lista de aulas</p>
+
+<a class="btn-secondary" href="aulas.html">continuar aula</a>
+</article>
+
+<article class="dashboard-line-card">
+<h2>Resumo de conclusão</h2>
+
+<div class="dashboard-line-chart" style="height: 150px;">
+<canvas id="grafico_linha"></canvas>
+</div>
+</article>
+</section>
+</main>
+</div>
+</body>
+</html>
+
+<script>
+var graficoPizza;
+var graficoLinha;
+
+var aulas = [
+{ id: 1, numero: "Aula 1", titulo: "Aula 1 - Primeiros acordes e ritmo" },
+{ id: 2, numero: "Aula 2", titulo: "Aula 2 - Mudança de acordes" },
+{ id: 3, numero: "Aula 3", titulo: "Aula 3 - Primeira música" },
+{ id: 4, numero: "Aula 4", titulo: "Aula 4 - Acordes básicos parte 2" },
+{ id: 5, numero: "Aula 5", titulo: "Aula 5 - Batidas" }
+];
+
+function carregarDashboard() {
+var idUsuario = sessionStorage.ID_USUARIO;
+var nomeUsuario = sessionStorage.NOME_USUARIO;
+
+if (nomeUsuario != undefined) {
+nome_dashboard.innerHTML = nomeUsuario;
+b_usuario.innerHTML = nomeUsuario;
+}
+
+fetch(`/aula/concluidas/${idUsuario}`)
+.then(function (resposta) {
+if (resposta.ok) {
+resposta.json().then(function (lista) {
+exibirAulasConcluidas(lista);
+exibirProximaAula(lista);
+exibirGraficoPizza(lista);
+exibirGraficoLinha(lista);
+});
+} else {
+console.log("Erro ao buscar aulas concluídas.");
+}
+})
+.catch(function (erro) {
+console.log("Erro ao carregar dashboard: " + erro);
+});
+}
+
+function exibirAulasConcluidas(lista) {
+lista_aulas_concluidas.innerHTML = "";
+
+if (lista.length == 0) {
+lista_aulas_concluidas.innerHTML = "<li>Nenhuma aula concluída</li>";
+} else {
+for (var i = 0; i < lista.length; i++) {
+lista_aulas_concluidas.innerHTML += `<li>${lista[i].titulo}</li>`;
+}
+}
+}
+
+function exibirProximaAula(listaConcluidas) {
+var proximaAula = null;
+
+for (var i = 0; i < aulas.length; i++) {
+var aulaAtual = aulas[i];
+var foiConcluida = false;
+
+for (var j = 0; j < listaConcluidas.length; j++) {
+if (listaConcluidas[j].id == aulaAtual.id) {
+foiConcluida = true;
+}
+}
+
+if (foiConcluida == false && proximaAula == null) {
+proximaAula = aulaAtual;
+}
+}
+
+if (proximaAula == null) {
+proxima_aula_numero.innerHTML = "Concluído";
+proxima_aula_titulo.innerHTML = "Você concluiu todas as aulas!";
+} else {
+proxima_aula_numero.innerHTML = proximaAula.numero;
+proxima_aula_titulo.innerHTML = proximaAula.titulo.replace(proximaAula.numero + " - ", "");
+}
+}
+
+function exibirGraficoPizza(lista) {
+var totalAulas = 5;
+var aulasConcluidas = lista.length;
+var aulasRestantes = totalAulas - aulasConcluidas;
+
+var dadosGrafico = {
+labels: ["Concluído", "Restante"],
+datasets: [{
+data: [aulasConcluidas, aulasRestantes],
+backgroundColor: ["#00ff66", "#1f2937"],
+borderWidth: 0
+}]
+};
+
+var config = {
+type: "doughnut",
+data: dadosGrafico,
+options: {
+responsive: true,
+maintainAspectRatio: false,
+plugins: {
+legend: {
+labels: {
+color: "#ffffff"
+}
+}
+}
+}
+};
+
+if (graficoPizza != undefined) {
+graficoPizza.destroy();
+}
+
+graficoPizza = new Chart(
+document.getElementById("grafico_pizza"),
+config
+);
+}
+
+function exibirGraficoLinha(lista) {
+var totalAulas = 5;
+var totalConcluidasAteAgora = 0;
+var dadosLinha = [];
+
+for (var i = 0; i < aulas.length; i++) {
+var aulaAtual = aulas[i];
+var foiConcluida = false;
+
+for (var j = 0; j < lista.length; j++) {
+if (lista[j].id == aulaAtual.id) {
+foiConcluida = true;
+}
+}
+
+if (foiConcluida) {
+totalConcluidasAteAgora++;
+}
+
+var porcentagem = Math.round((totalConcluidasAteAgora / totalAulas) * 100);
+dadosLinha.push(porcentagem);
+}
+
+var dadosGraficoLinha = {
+labels: ["Aula 1", "Aula 2", "Aula 3", "Aula 4", "Aula 5"],
+datasets: [{
+label: "Progresso",
+data: dadosLinha,
+borderColor: "#39d129",
+backgroundColor: "rgba(57, 209, 41, 0.16)",
+fill: true,
+tension: 0.3,
+pointBackgroundColor: "#00ff66",
+pointBorderColor: "#00ff66"
+}]
+};
+
+var configLinha = {
+type: "line",
+data: dadosGraficoLinha,
+options: {
+responsive: true,
+maintainAspectRatio: false,
+scales: {
+y: {
+beginAtZero: true,
+max: 100,
+ticks: {
+color: "#cfcfcf",
+callback: function (valor) {
+return valor + "%";
+}
+},
+grid: {
+color: "rgba(255, 255, 255, 0.12)"
+}
+},
+x: {
+ticks: {
+color: "#cfcfcf"
+},
+grid: {
+color: "rgba(255, 255, 255, 0.08)"
+}
+}
+},
+plugins: {
+legend: {
+labels: {
+color: "#ffffff"
+}
+}
+}
+}
+};
+
+if (graficoLinha != undefined) {
+graficoLinha.destroy();
+}
+
+graficoLinha = new Chart(
+document.getElementById("grafico_linha"),
+configLinha
+);
+}
+</script>
