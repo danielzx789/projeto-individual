@@ -1,107 +1,88 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Materiais de apoio - Next Fret</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materiais - Next Fret</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <!-- Topo compacto usado nas telas internas do aluno. -->
-  <nav class="navbar navbar--compact">
-    <a class="logo" href="dashboard.html" aria-label="Resumo do painel Next Fret">
-      <img src="logoguitarra.png" alt="Logo Next Fret">
-      <span>Next Fret</span>
-    </a>
+<nav class="navbar navbar--mini">
+<a class="logo" href="dashboard.html">
+<span class="logo-image"></span>
+<span class="logo-text">Next Fret</span>
+</a>
 
-    <div class="nav-links" aria-label="Links principais do painel">
-      <a href="sobre.html">Sobre nós</a>
-      <a href="aulas.html">Aulas</a>
-      <a href="setup.html">Equipamentos</a>
-    </div>
-  </nav>
+<div class="navbar-links">
+<a href="sobre.html">Sobre nós</a>
+<a href="aulas.html">Aulas</a>
+<a href="setup.html">Equipamentos</a>
+</div>
+</nav>
 
-  <!-- Tela de materiais: lista arquivos de apoio para baixar. -->
-  <div class="dashboard-container">
-    <aside class="sidebar">
-      <nav class="menu-lateral" aria-label="Menu lateral">
-        <a href="dashboard.html">Resumo</a>
-        <a href="aulas.html">Aulas</a>
-        <a href="musicas.html">Músicas</a>
-        <a class="active" href="materiais.html">Materiais</a>
-        <a href="setup.html">Setup</a>
-        <a href="index.html">Sair</a>
+<div class="dashboard-container">
+<aside class="sidebar">
+<nav class="menu-lateral">
+<a href="dashboard.html">Resumo</a>
+<a href="aulas.html">Aulas</a>
+<a href="musicas.html">Músicas</a>
+<a class="active" href="materiais.html">Materiais</a>
+<a href="setup.html">Setup</a>
+<a href="index.html">Sair</a>
 
-        <div class="user-chip" aria-label="Usuário logado">
-          <span class="user-avatar" aria-hidden="true">D</span>
-          <span>Daniel</span>
-        </div>
-      </nav>
-    </aside>
+<div class="user-block">
+<span class="user-avatar">D</span>
+<span>Daniel</span>
+</div>
+</nav>
+</aside>
 
-    <main class="content">
-      <h1>Materiais de apoio</h1>
+<main class="content">
+<h1>Materiais de apoio</h1>
 
-      <div class="lista">
-        <article class="item-barra">
-          <div class="item-info">
-            <span class="titulo">Tabela de acordes</span>
-            <span class="subtitulo">PDF</span>
-          </div>
+<div class="list">
+<article class="item-bar">
+<div class="item-info">
+<span class="title">Tabela de acordes</span>
+<span class="subtitle">PDF</span>
+</div>
+<a class="btn-action" href="#" target="_blank"><span class="download-icon"></span></a>
+</article>
 
-          <button class="botao-acao" type="button" aria-label="Baixar tabela de acordes">
-            <img src="download.png" alt="">
-          </button>
-        </article>
+<article class="item-bar">
+<div class="item-info">
+<span class="title">Exercícios de ritmo</span>
+<span class="subtitle">PDF</span>
+</div>
+<a class="btn-action" href="#" target="_blank"><span class="download-icon"></span></a>
+</article>
 
-        <article class="item-barra">
-          <div class="item-info">
-            <span class="titulo">Exercícios de ritmo</span>
-            <span class="subtitulo">PDF</span>
-          </div>
+<article class="item-bar">
+<div class="item-info">
+<span class="title">Escalas básicas</span>
+<span class="subtitle">PDF</span>
+</div>
+<a class="btn-action" href="#" target="_blank"><span class="download-icon"></span></a>
+</article>
 
-          <button class="botao-acao" type="button" aria-label="Baixar exercícios de ritmo">
-            <img src="download.png" alt="">
-          </button>
-        </article>
+<article class="item-bar">
+<div class="item-info">
+<span class="title">Backing tracks</span>
+<span class="subtitle">PDF</span>
+</div>
+<a class="btn-action" href="#" target="_blank"><span class="download-icon"></span></a>
+</article>
 
-        <article class="item-barra">
-          <div class="item-info">
-            <span class="titulo">Escalas básicas</span>
-            <span class="subtitulo">PDF</span>
-          </div>
-
-          <button class="botao-acao" type="button" aria-label="Baixar escalas básicas">
-            <img src="download.png" alt="">
-          </button>
-        </article>
-
-        <article class="item-barra">
-          <div class="item-info">
-            <span class="titulo">Backing tracks</span>
-            <span class="subtitulo">PDF</span>
-          </div>
-
-          <button class="botao-acao" type="button" aria-label="Baixar backing tracks">
-            <img src="download.png" alt="">
-          </button>
-        </article>
-
-        <article class="item-barra">
-          <div class="item-info">
-            <span class="titulo">Dicionário de termos</span>
-            <span class="subtitulo">PDF</span>
-          </div>
-
-          <button class="botao-acao" type="button" aria-label="Baixar dicionário de termos">
-            <img src="download.png" alt="">
-          </button>
-        </article>
-      </div>
-    </main>
-  </div>
+<article class="item-bar">
+<div class="item-info">
+<span class="title">Dicionário de termos</span>
+<span class="subtitle">PDF</span>
+</div>
+<a class="btn-action" href="#" target="_blank"><span class="download-icon"></span></a>
+</article>
+</div>
+</main>
+</div>
 </body>
-
 </html>
