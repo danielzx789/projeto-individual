@@ -1,48 +1,99 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro - Next Fret</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cadastro - Next Fret</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <!-- Topo simples usado antes do usuario entrar no painel. -->
-  <nav class="navbar">
-    <a class="logo" href="index.html" aria-label="Página inicial do Next Fret">
-      <img src="logoguitarra.png" alt="Logo Next Fret">
-      <span>Next Fret</span>
-    </a>
+<nav class="navbar">
+<a class="logo" href="index.html">
+<span class="logo-image"></span>
+<span class="logo-text">Next Fret</span>
+</a>
 
-    <div class="nav-links" aria-label="Links de acesso">
-      <a href="login.html">Login</a>
-      <a class="active" href="cadastro.html">Cadastre-se</a>
-    </div>
-  </nav>
+<div class="navbar-links">
+<a href="login.html">Login</a>
+<a class="active" href="cadastro.html">Cadastre-se</a>
+</div>
+</nav>
 
-  <!-- Area central do formulario de cadastro. -->
-  <main class="auth">
-    <form class="auth-box" action="dashboard.html">
-      <h1>Cadastro</h1>
+<main class="auth">
+<form class="auth-box" onsubmit="return cadastrar()">
+<h1>Cadastro</h1>
 
-      <label for="nome">Nome</label>
-      <input id="nome" name="nome" type="text" placeholder="Digite seu nome">
+<label for="nome_input">Nome</label>
+<input id="nome_input" type="text" placeholder="Digite seu nome">
 
-      <label for="email">Email</label>
-      <input id="email" name="email" type="email" placeholder="Digite seu email">
+<label for="email_input">Email</label>
+<input id="email_input" type="email" placeholder="Digite seu email">
 
-      <label for="senha">Senha</label>
-      <input id="senha" name="senha" type="password" placeholder="Digite sua senha">
+<label for="senha_input">Senha</label>
+<input id="senha_input" type="password" placeholder="Digite sua senha">
 
-      <button class="btn-primary" type="submit">Cadastrar</button>
+<label for="confirmar_senha_input">Confirmar Senha</label>
+<input id="confirmar_senha_input" type="password" placeholder="Confirme sua senha">
 
-      <p class="login-link">
-        Já possui uma conta? <a href="login.html">Fazer login</a>
-      </p>
-    </form>
-  </main>
+<p id="mensagem_erro" class="login-link"></p>
+
+<button class="btn-primary" type="submit">Cadastrar</button>
+
+<p class="login-link">
+Já possui uma conta? <a href="login.html">Fazer login</a>
+</p>
+</form>
+</main>
 </body>
-
 </html>
+
+<script>
+function cadastrar() {
+var nome = nome_input.value;
+var email = email_input.value;
+var senha = senha_input.value;
+var confirmarSenha = confirmar_senha_input.value;
+
+if (nome == "" || email == "" || senha == "" || confirmarSenha == "") {
+mensagem_erro.innerHTML = "Preencha todos os campos.";
+return false;
+}
+
+if (senha != confirmarSenha) {
+mensagem_erro.innerHTML = "As senhas não coincidem.";
+return false;
+}
+
+fetch("/usuarios/cadastrar", {
+method: "POST",
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify({
+nomeServer: nome,
+emailServer: email,  
+senhaServer: senha
+})
+}).then(function (resposta) {
+console.log("resposta: ", resposta);
+
+if (resposta.ok) {
+mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para o login...";
+
+setTimeout(function () {
+window.location = "login.html";
+}, 1500);
+} else {
+resposta.text().then(function (texto) {
+mensagem_erro.innerHTML = texto;
+});
+}
+}).catch(function (erro) {
+console.log("#ERRO: ", erro);
+mensagem_erro.innerHTML = "Houve um erro ao tentar realizar o cadastro.";
+});
+
+return false;
+}
+</script>
