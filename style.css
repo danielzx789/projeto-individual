@@ -1,232 +1,14 @@
-/* 
-  Explicação do que eu usei no CSS
-
-  VISTO EM AULA
-
-  *
-  O asterisco seleciona todos os elementos da página.
-  A função dele aqui é remover as margens e os espaçamentos padrões que o navegador coloca automaticamente.
-
-  body
-  Define o estilo geral do corpo do site.
-  Tudo que estiver dentro da página herda principalmente a fonte, a cor do texto e a cor de fundo.
-
-  a
-  Estiliza os links.
-  O link herda a cor do elemento onde ele está e perde aquele sublinhado padrão.
-
-  p
-  Estiliza os parágrafos.
-  Usa a cor secundária e aumenta o espaço entre as linhas para melhorar a leitura.
-
-  ul
-  Estiliza as listas.
-  Mantém um recuo com margin-left para os itens não ficarem colados na esquerda.
-
-  button, input, select
-  Faz os botões e os campos de formulário usarem a mesma fonte do site.
-
-  background-image
-  Coloca uma imagem de fundo em um elemento.
-
-  background-position
-  Define onde a imagem de fundo ficará posicionada dentro do elemento.
-
-  background-repeat
-  Controla se a imagem de fundo vai repetir ou não.
-
-  background-size
-  Controla o tamanho da imagem de fundo.
-  contain mostra a imagem inteira.
-  cover preenche todo o espaço, mesmo que corte a imagem um pouco.
-
-  .navbar
-  Estiliza a barra de navegação.
-  Usa flexbox para deixar a logo de um lado e os links do outro.
-
-  display: flex
-  Organiza os elementos em linha ou coluna, em uma única direção.
-
-  align-items
-  Alinha os itens no eixo vertical quando está usando flex.
-
-  justify-content
-  Distribui os itens no eixo horizontal quando está usando flex.
-
-  gap
-  Cria espaço entre os elementos dentro do flex ou grid.
-
-  .btn-primary e .btn-secondary
-  Estilizam os botões principais e secundários do site.
-
-  :hover
-  Aplica um estilo quando o mouse passa por cima do elemento.
-
-  .hero
-  É a primeira parte visual da página inicial.
-  Tem uma imagem de fundo, texto principal e botão.
-
-  .main
-  Limita a largura do conteúdo principal e centraliza a página.
-
-  .footer
-  Estiliza o rodapé do site.
-
-  .auth
-  Estiliza a tela de login e cadastro.
-  Usa imagem de fundo e centraliza a caixa do formulário.
-
-  .dashboard-container
-  Organiza a sidebar e o conteúdo das páginas internas lado a lado.
-
-  .sidebar
-  Estiliza o menu lateral das páginas internas.
-
-  .content
-  Estiliza a área principal das páginas internas.
-
-  .list
-  Organiza listas de aulas, músicas e materiais em coluna.
-
-  .item-bar
-  Estiliza cada item das listas internas.
-
-  .badge
-  Estiliza etiquetas como Fácil, Médio e Difícil.
-
-  VISTO EM MATERIAIS DE APOIO / PESQUISA
-
-  :root
-  Guarda valores que vão ser usados várias vezes no site, como cores e imagens.
-  Isso evita repetir o mesmo código em muitos lugares.
-
-  --color-...
-  São variáveis de cor.
-
-  --image-...
-  São variáveis de imagem.
-
-  .logo-image, .card-icon, .download-icon
-  Essas classes foram criadas para mostrar imagens usando CSS,
-  e não usando a tag <img> no HTML.
-
-  clamp()
-  Serve para criar um valor que se adapta ao tamanho da tela,
-  mas sem ficar pequeno demais e sem ficar grande demais.
-
-  Ele funciona com 3 valores:
-
-  clamp(valor mínimo, valor ideal, valor máximo)
-
-  Isso ajuda o site a se adaptar a tamanhos diferentes de tela.
-
-  position: relative
-  Faz o elemento continuar no lugar normal dele,
-  mas permite que elementos dentro dele usem esse bloco como referência.
-
-  position: absolute
-  Tira o elemento do fluxo normal da página
-  e permite posicionar ele em um lugar específico.
-
-  inset: 0
-  É um atalho para:
-
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-
-  Faz o elemento ocupar todo o espaço do elemento pai.
-
-  z-index
-  Controla qual elemento fica na frente ou atrás, para montar as camadas.
-
-  width: min(100%, 1120px)
-  Faz o elemento ocupar no máximo 1120px,
-  mas sem passar da largura da tela.
-
-  display: grid
-  Organiza elementos em linhas e colunas ao mesmo tempo.
-  Foi usado nos cards e em partes com mais de uma coluna.
-
-  grid-template-columns
-  Define quantas colunas o grid vai ter.
-
-  backdrop-filter
-  Cria o efeito de desfoque atrás da caixa de login/cadastro.
-
-  :focus
-  Aplica estilo quando um input está selecionado.
-
-  .lesson-btn.is-completed
-  Estiliza o botão quando uma aula foi marcada como concluída.
-
-  ::before
-  Cria um conteúdo antes do texto do elemento.
-  Aqui ele coloca o símbolo de check no botão concluído.
-
-  ::after
-  Cria um conteúdo depois do elemento.
-  Aqui ele coloca o check decorativo no card de aulas concluídas.
-
-  .dashboard-grid
-  Organiza os cards da dashboard em colunas.
-
-  .progress-ring
-  Cria o círculo de progresso da dashboard.
-
-  conic-gradient
-  Cria um preenchimento circular,
-  usado para parecer um gráfico de porcentagem.
-
-  .dashboard-line-card
-  Estiliza o card do gráfico de linha.
-
-  svg
-  Desenha o gráfico dentro do HTML.
-
-  .about-layout
-  Organiza a página sobre
-  e permite colocar a imagem decorativa no fundo.
-
-  .decorative-img
-  Mostra a imagem da guitarra e amp como fundo decorativo.
-
-  pointer-events: none
-  Faz a imagem decorativa não atrapalhar cliques.
-
-  aspect-ratio
-  Mantém uma proporção de largura e altura para a imagem.
-
-  .calculator-layout
-  Estiliza o fundo da página da calculadora.
-
-  .calculator-grid
-  Divide a calculadora em duas colunas:
-  formulário e lista de itens.
-
-  .calculator-card
-  Estiliza os blocos da calculadora.
-
-  .calculator-item
-  Estiliza cada item salvo na calculadora.
-
-  .calculator-total
-  Estiliza a linha que mostra o total estimado.
-*/
-
-/* Variáveis usadas no site inteiro, pra cores e imagens */
 :root {
-  --color-background: #000000; /* Cor de fundo. */
-  --color-card: #0d2015; /* Cor dos cards e dos blocos maiores. */
-  --color-list: #081404; /* Cor das listas de aulas, músicas e materiais. */
-  --color-control: #12240a; /* Cor dos botões pequenos e controles. */
-  --color-text: #ffffff; /* Cor principal dos textos. */
-  --color-text-secondary: #cfcfcf; /* Cor de textos secundários. */
-  --color-border: rgba(255, 255, 255, 0.14); /* Cor de bordas. */
-  --color-dark-green: #14532d; /* Verde escuro usado no topo e na sidebar. */
-  --color-main-green: #1f7a3a; /* Verde principal dos botões. */
-  --color-hover-green: #239447; /* Verde usado quando o mouse passa por cima. */
+  --color-background: #000000;
+  --color-card: #0d2015;
+  --color-list: #081404;
+  --color-control: #12240a;
+  --color-text: #ffffff;
+  --color-text-secondary: #cfcfcf;
+  --color-border: rgba(255, 255, 255, 0.14);
+  --color-dark-green: #14532d;
+  --color-main-green: #1f7a3a;
+  --color-hover-green: #239447;
   --color-light-green: #00ff66;
   --color-orange: #ffb020;
   --color-red: #ff4d4d;
@@ -244,364 +26,323 @@
   --image-about: url("images/image_guitarraeamp.png");
 }
 
-/* Remove os espaçamentos padrão do navegador. */
+/* Remove os espaços que vem padrão do navegadr. */
 * {
-  margin: 0; /* Remove a margem padrão. */
-  padding: 0; /* Remove o espaço interno padrão. */
-  box-sizing: border-box; /* Faz padding e borda entrarem no cálculo do tamanho. */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Faz padding e borda entrarem no tamanho total do elemento. */
 }
 
-/* Corpo do site. */
 body {
-  min-height: 100vh; /* Faz o body ocupar no mínimo a altura total da tela. */
+  min-height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
   background: var(--color-background);
   color: var(--color-text);
 }
 
-/* Links do site. */
 a {
-  color: inherit; /* Faz o link usar a cor do elemento pai. */
-  text-decoration: none; /* Remove o sublinhado padrão. */
+  color: inherit; /* Faz o link ter a mesma cor do texto ao redor, em vez de ficar azul por padrão. */
+  text-decoration: none; /* Remove o sublinhado padrão do link. */
 }
 
-/* Parágrafos. */
 p {
   color: var(--color-text-secondary);
-  line-height: 1.6; /* Aumenta o espaço entre linhas. */
+  line-height: 1.6; /* Dá mais espaço entre uma linha e outra do parágrafo. */
 }
-
-/* Listas. */
+/* Afasta todas as listas da borda esquerda para melhorar o alinhamento e a leitura do texto */
 ul {
-  margin-left: 20px; /* Cria recuo para a esquerda nos itens da lista. */
+  margin-left: 20px;
 }
 
-/* Faz formulários e botões herdarem a fonte do site. */
-button,
-input,
-select {
-  font: inherit; /* Usa a mesma fonte do body. */
+/* Garante que os botões e campos do formulário usem a mesma fonte do resto do site, 
+   já que o navegador não faz essa herança de forma automática. */
+button, input, select {
+  font: inherit;
 }
 
-/* Botões. */
 button {
   cursor: pointer; /* Mostra a mãozinha ao passar o mouse. */
 }
 
-/* Classes usadas nas imagens controladas pelo CSS. */
 .logo-image,
 .card-icon,
 .download-icon {
-  display: inline-block; /* Permite definir largura e altura. */
-  flex-shrink: 0; /* Não deixa o elemento encolher em flexbox. */
-  background-position: center; /* Centraliza a imagem de fundo. */
-  background-repeat: no-repeat; /* Não deixa a imagem repetir. */
-  background-size: contain; /* Mostra a imagem inteira sem cortar. */
+  display: inline-block; /* Permite que o elemento tenha largura e altura, mesmo sendo usado como imagem pequena na linha. */
+  background-position: center; /* Coloca a imagem de fundo no centro do espaço do elemento. */
+  background-size: contain; /* Ajusta a imagem para caber inteira dentro do espaço, sem cortar. */
 }
 
-/* Imagem da logo da navbar. */
 .logo-image {
-  width: 92px;
-  height: 72px;
-  border-radius: 8px;
+  width: 100px;
+  height: 100px;
   background-image: var(--image-logo);
 }
 
-/* Logo menor na navbar das páginas internas. */
 .navbar--mini .logo-image {
-  width: 52px; /* Reduz a largura da logo de 92px para 52px nas páginas internas. */
-  height: 52px; /* Reduz a altura da logo de 72px para 52px nas páginas internas. */
+  width: 100px;
+  height: 80px;
 }
 
-/* Logo menor quando estiver no rodapé. */
 .footer-logo .logo-image {
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
 }
 
-/* Moldura de imagem usada na home. */
+
 .image-frame {
   width: 100%;
-  height: 360px;
-  border-radius: 8px;
-  background-position: center; /* Centraliza a imagem. */
-  background-repeat: no-repeat; /* Não repete a imagem. */
-  background-size: cover; /* Cobre toda a área, cortando se necessário. */
+  height: 450px;
+  border-radius: 15px;
+  background-position: center;
+  background-size: cover; /* Preenche toda a área, mesmo que corte um pouco a imagem. */
 }
 
-/* Imagem do aluno tocando. */
 .image-frame--student {
   background-image: var(--image-student);
 }
 
-/* Imagem da segunda seção da home. */
 .image-frame--section {
   background-image: var(--image-section);
 }
 
-/* Ícones dos cards da home. */
 .card-icon {
   width: 70px;
   height: 70px;
-  margin: 0 auto 15px; /* Centraliza o ícone e cria espaço abaixo. */
-  border-radius: 50%;
+  border-radius: 35px;
 }
 
-/* Ícone do método. */
 .card-icon--method {
   background-image: var(--image-method-icon);
 }
-  
-/* Ícone de setup. */
+
 .card-icon--setup {
   background-image: var(--image-setup-icon);
 }
 
-/* Ícone de progresso. */
 .card-icon--progress {
   background-image: var(--image-progress-icon);
 }
 
-/* Ícone de download dos materiais. */
 .download-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
+  width: 25px;
+  height: 25px;
   background-image: var(--image-download-icon);
 }
 
-/* Barra de navegação superior. */
 .navbar {
-  min-height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding: 0 clamp(20px, 5vw, 60px); /* Espaçamento lateral responsivo simples. */
   background: var(--color-dark-green);
 }
 
-/* Versão menor da navbar para páginas internas. */
-.navbar--mini {
-  min-height: 60px;
-}
 
-/* Logo. */
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  white-space: nowrap; /* Impede a quebra de linha no nome. */
+  white-space: nowrap; /* Impede que o nome Next Fret quebre e fique em duas linhas. */
+  margin-left: 20px; 
 }
 
-/* Texto da logo. */
 .logo-text {
   color: var(--color-text);
-  font-size: 22px;
-  font-weight: 700; /* Deixa em negrito. */
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: -10px;
+
 }
 
-/* Texto da logo na navbar menor. */
 .navbar--mini .logo-text {
-  font-size: 20px; /* Reduz um pouco o texto. */
+  font-size: 25px;
 }
 
-/* Links do topo. */
 .navbar-links {
   display: flex;
   align-items: center;
-  gap: clamp(14px, 3vw, 30px); /* Espaço responsivo entre links. */
+  gap: 60px;
+  margin-right: 60px;
 }
 
-/* Cada link do topo. */
 .navbar-links a {
   color: var(--color-text-secondary);
-  font-size: 14px;
+  font-size: 15px;
 }
 
-/* Link ativo ou com mouse em cima. */
+/* 
+  Estilização dos links do menu de navegação.
+  Ativa o efeito visual em dois cenários:
+  :hover = Quando o usuário passa o mouse em cima do link.
+  .active = Quando o link representa a página atual onde o usuário está.
+ */
 .navbar-links a:hover,
 .navbar-links a.active {
   color: var(--color-text);
 }
 
-/* Botões principais do site. */
+/* Botões do site. */
 .btn-primary,
-.btn-secondary {
-  min-height: 44px;
-  display: inline-flex; /* Permite centralizar conteúdo. */
-  align-items: center;
-  justify-content: center;
-  padding: 0 24px; /* Espaçamento lateral. */
-  border: 0; /* Remove a borda padrão. */
-  border-radius: 8px;
+.btn-secondary,
+.btn-watch {
+  display: inline-block;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 10px;
   background: var(--color-main-green);
   color: var(--color-text);
-  font-weight: 700; /* Texto em negrito. */
+  font-weight: bold;
+  text-align: center;
 }
 
-/* Hover dos botões principais. */
+/* Hover dos botões . */
 .btn-primary:hover,
-.btn-secondary:hover {
+.btn-secondary:hover,
+.btn-watch:hover {
   background: var(--color-hover-green);
 }
 
-/* Botão secundário. */
 .btn-secondary {
-  margin-top: 18px;
-  background: #173c25; /* Verde mais fechado. */
+  margin-top: 20px;
+  background: #173c25;
 }
 
-/* Hero da página inicial. */
 .hero {
-  min-height: calc(90vh - 80px); /* Ocupa quase a tela toda menos a navbar. */
-  position: relative; /* Permite posicionar o overlay absoluto dentro do hero. */
+  min-height: 650px;
+  position: relative; /* Faz o hero virar a referência para posicionar a camada escura dentro dele. */
   display: flex;
   align-items: center;
-  padding: 80px clamp(24px, 7vw, 80px); /* Espaçamento interno responsivo simples. */
+  padding: 80px 60px;
   background: var(--image-home-hero);
-  background-position: center; /* Centraliza o fundo. */
-  background-repeat: no-repeat; /* Não repete o fundo. */
-  background-size: cover; /* Cobre toda a área. */
+  background-position: center;
+  background-size: cover;
 }
 
-/* Camada escura sobre o hero. */
 .hero-overlay {
-  position: absolute; /* Fica por cima da imagem. */
-  inset: 0; /* Ocupa toda a área do hero. */
-  background: rgba(0, 0, 0, 0.72); /* Escurece o fundo para melhorar a leitura. */
+  position: absolute; /* Posiciona a camada escura livremente dentro do hero, por cima da imagem. */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.50);
 }
 
-/* Conteúdo do hero. */
 .hero-content {
-  position: relative; /* Fica acima do overlay. */
-  z-index: 1; /* Garante que apareça acima da camada escura. */
-  max-width: 560px; /* Limita a largura do texto. */
+  position: relative; /* Permite controlar a camada do texto. */
+  max-width: 560px;
 }
 
-/* Título do hero. */
 .hero h1 {
-  margin-bottom: 24px;
-  font-size: clamp(36px, 6vw, 56px); /* Tamanho responsivo simples. */
-  line-height: 1.08; /* Aproxima as linhas. */
+  margin-bottom: 50px;
+  font-size: 48px;
 }
 
-/* Parágrafo do hero. */
 .hero p {
-  max-width: 460px; /* Limita a largura do texto. */
-  margin-bottom: 30px; /* Espaço antes do botão. */
+  max-width: 450px;
+  margin-bottom: 40px;
   font-size: 18px;
 }
 
-/* Conteúdo principal da home. */
 .main {
-  width: min(100%, 1120px); /* Largura máxima do conteúdo. */
-  margin: 0 auto; /* Centraliza na tela. */
-  padding: 80px clamp(24px, 5vw, 40px); /* Espaçamento interno. */
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 80px 40px;
 }
 
 /* Linhas com duas colunas na home. */
 .top-row,
 .bottom-row {
-  display: grid; /* Usa grid para criar colunas. */
-  grid-template-columns: repeat(2, minmax(0, 1fr)); /* Cria duas colunas iguais. */
+  display: grid; /* Organiza elementos em linhas e colunas. */
+  grid-template-columns: 1fr 1fr; /* Divide em duas colunas iguais. */
   align-items: center;
-  gap: clamp(32px, 6vw, 60px); /* Espaço entre colunas. */
+  gap: 60px;
   margin-bottom: 80px;
 }
 
-/* Títulos das seções da home. */
 .text-block h2,
 .col-right h2 {
-  margin-bottom: 24px;
-  font-size: clamp(28px, 4vw, 36px); /* Tamanho responsivo simples. */
+  margin-bottom: 55px;
+  font-size: 30px;
 }
 
-/* Itens das listas da home. */
 .text-block li,
 .col-left li {
-  margin-bottom: 12px; /* Espaço entre itens. */
+  margin-bottom: 20px;
+}
+.music-intro {
+  margin-top: 40px;
+  margin-bottom: 24px;
+
 }
 
-/* Grid dos cards da home. */
+.music-list li {
+  margin-bottom: 18px;
+}
+
 .card-grid {
-  display: grid; /* Ativa grid. */
-  grid-template-columns: repeat(3, minmax(0, 1fr)); /* Cria três colunas. */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* Divide em três colunas iguais. */
   gap: 20px;
   margin-bottom: 80px;
 }
 
-/* Card individual. */
 .card {
-  min-height: 190px;
+  min-height: 200px;
   padding: 30px;
   text-align: center;
   border-radius: 8px;
   background: var(--color-card);
 }
 
-/* Título do card. */
 .card h3 {
   margin-bottom: 8px;
 }
 
-/* Texto antes da lista de músicas. */
 .col-left p {
-  margin-top: 20px;
-  margin-bottom: 15px;
-  font-weight: 700; /* Negrito. */
+  font-weight: bold;
 }
 
-/* Parágrafos da coluna direita. */
 .col-right p {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
-/* Botão da coluna direita. */
 .col-right .btn-primary {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
-/* Rodapé do site. */
 .footer {
-  margin-top: 80px;
-  padding: 40px 20px;
+  margin-top: 60px;
+  padding: 30px 20px;
   background: var(--color-dark-green);
-  border-top: 1px solid var(--color-border); /* Linha superior discreta. */
 }
 
-/* Conteúdo interno do rodapé. */
 .footer-container {
-  width: min(100%, 1120px); /* Largura máxima. */
-  margin: 0 auto; /* Centraliza. */
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  flex-wrap: wrap; /* Permite quebrar se faltar espaço. */
 }
 
-/* Logo do rodapé. */
 .footer-logo {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-/* Texto da logo do rodapé. */
 .footer-logo p {
   color: var(--color-text);
   font-size: 18px;
-  font-weight: 700; /* Negrito. */
+  font-weight: bold;
 }
 
-/* Links do rodapé. */
 .footer-links {
   display: flex;
   gap: 20px;
 }
 
-/* Links e copyright do rodapé. */
 .footer-links a,
 .footer-copy {
   color: var(--color-text-secondary);
@@ -609,333 +350,288 @@ button {
 
 /* Tela de login e cadastro. */
 .auth {
-  min-height: calc(100vh - 80px); /* Ocupa a tela abaixo da navbar. */
+  min-height: 700px;
   display: flex;
   align-items: center;
-  padding: 40px clamp(24px, 8vw, 120px); /* Espaçamento responsivo simples. */
+  padding: 40px 80px;
   background: var(--image-auth-background);
-  background-position: center; /* Centraliza o fundo. */
-  background-repeat: no-repeat; /* Não repete o fundo. */
-  background-size: cover; /* Cobre toda a área. */
+  background-position: center;
+  background-size: cover;
 }
 
-/* Caixa do formulário. */
 .auth-box {
-  width: min(100%, 380px); /* Largura responsiva simples. */
+  width: 100%;
+  max-width: 380px;
   padding: 40px;
-  border-radius: 8px;
-  background: rgba(0, 0, 0, 0.62); /* Fundo escuro transparente. */
-  backdrop-filter: blur(5px); /* Desfoca o fundo atrás da caixa. */
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.62);
+  backdrop-filter: blur(5px); /* Desfoca a imagem atrás da caixa. */
 }
 
-/* Título do formulário. */
 .auth-box h1 {
   margin-bottom: 24px;
   font-size: 32px;
 }
 
-/* Labels do formulário. */
 .auth-box label {
-  display: block; /* Ocupa linha inteira. */
+  display: block; /* Faz o texto do campo ocupar uma linha inteira, deixando o input na linha de baixo. */
   margin-bottom: 6px;
-  font-weight: 700; /* Negrito. */
+  font-weight: bold;
 }
 
-/* Inputs do formulário. */
 .auth-box input {
   width: 100%;
-  min-height: 44px;
+  min-height: 50px;
   margin-bottom: 16px;
   padding: 0 12px;
-  border: 1px solid transparent; /* Borda invisível inicial. */
+  border: 1px solid rgba(255, 255, 255, 0.25); /* Borda branca transparente. */
   border-radius: 8px;
-  outline: 0; /* Remove o contorno padrão. */
-  background: rgba(255, 255, 255, 0.18); /* Fundo transparente claro. */
+  background: rgba(255, 255, 255, 0.18);
   color: var(--color-text);
 }
 
-/* Input selecionado. */
 .auth-box input:focus {
-  border-color: var(--color-main-green);
+  border-color: var(--color-main-green); /* Muda a borda quando o input está selecionado. */
 }
 
-/* Botão do formulário. */
 .auth-box .btn-primary {
   width: 100%;
 }
 
-/* Texto auxiliar de login/cadastro. */
 .login-link {
-  margin-top: 14px;
+  margin-top: 15px;
   font-size: 13px;
+  text-align: center;
 }
 
-/* Link dentro do texto auxiliar. */
 .login-link a {
   color: var(--color-text);
-  text-decoration: underline; /* Sublinhado para parecer clicável. */
+  text-decoration: underline; /* Coloca sublinhado para parecer clicável. */
 }
 
-/* Container das páginas internas. */
 .dashboard-container {
   display: flex;
-  min-height: calc(100vh - 60px); /* Altura abaixo da navbar menor. */
+  min-height:100vh;
 }
 
-/* Sidebar lateral. */
 .sidebar {
-  width: 220px;
-  flex-shrink: 0; /* Impede a sidebar de encolher. */
+  width: 200px;
+  min-width: 200px;
+  align-self: stretch; /* Faz a sidebar esticar até o final da área interna. */
   padding: 40px 0;
   background: var(--color-dark-green);
 }
 
-/* Menu lateral. */
 .menu-lateral {
   display: flex;
-  flex-direction: column; /* Organiza links em coluna. */
-  gap: 22px;
+  flex-direction: column; /* Coloca os links um embaixo do outro. */
+  gap: 30px;
+  padding-top: 50px; /* Desce os itens da sidebar. */
+
 }
 
-/* Links da sidebar. */
 .sidebar a {
-  display: block; /* Aumenta a área clicável. */
+  display: block; /* Faz o link ocupar a linha inteira. */
   padding: 0 40px;
   color: var(--color-text);
-  font-size: 18px;
-  font-weight: 700; /* Negrito. */
+  font-size: 22px;
+  font-weight: bold;
 }
 
-/* Link ativo ou hover da sidebar. */
 .sidebar a:hover,
 .sidebar a.active {
   color: var(--color-light-green);
 }
 
-/* Bloco do usuário Daniel. */
 .user-block {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: 4px 24px 0; /* Posiciona dentro da sidebar. */
-  padding: 12px 16px; /* Espaçamento interno. */
-  border: 1px solid var(--color-border); /* Borda discreta. */
+  margin: 20px 24px 0;
+  padding: 12px 16px;
   border-radius: 8px;
-  background: rgba(0, 0, 0, 0.18); /* Fundo escuro discreto. */
+  background: rgba(0, 0, 0, 0.18);
   font-size: 18px;
-  font-weight: 700; /* Negrito. */
+  font-weight: bold;
 }
 
-/* Círculo do avatar. */
 .user-avatar {
   width: 34px;
   height: 34px;
-  display: inline-flex; /* Centraliza a letra. */
+  display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
+  border-radius: 18px;
   background: var(--color-light-green);
   color: var(--color-background);
   font-size: 16px;
-  font-weight: 700; /* Negrito. */
+  font-weight: bold;
 }
 
-/* Conteúdo principal das páginas internas. */
 .content {
-  flex: 1; /* Ocupa o espaço restante. */
-  min-width: 0; /* Evita estouro lateral. */
-  padding: 60px clamp(24px, 6vw, 80px); /* Espaçamento responsivo simples. */
+  flex: 1; /* Como a página usa flex, isso faz o conteúdo crescer e ocupar o espaço que sobra ao lado do menu lateral. */
+  min-width: 0;
+  padding: 60px 80px;
 }
 
-/* Título das páginas internas. */
 .content h1 {
   margin-bottom: 34px;
   font-size: 32px;
-  font-weight: 400; /* Peso mais leve. */
+  font-weight: 400;
 }
 
 /* Lista de aulas, músicas e materiais. */
 .list {
-  width: min(100%, 850px); /* Largura máxima da lista. */
+  width: 100%;
+  max-width: 850px;
   display: flex;
-  flex-direction: column; /* Empilha itens. */
+  flex-direction: column;
   gap: 15px;
 }
 
-/* Item individual da lista. */
 .item-bar {
-  min-height: 76px;
+  min-height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding: 18px 26px; /* Espaçamento interno. */
-  border: 1px solid var(--color-border); /* Borda discreta. */
-  border-radius: 8px;
+  padding: 12px 26px;
+  border-radius: 10px;
   background: var(--color-list);
 }
 
-/* Informações dentro do item. */
 .item-info {
   display: flex;
-  flex-direction: column; /* Título e subtítulo em coluna. */
+  flex-direction: column;
   gap: 4px;
 }
 
-/* Linha de título com seta. */
 .item-info-row {
-  min-width: 0; /* Evita estouro de texto. */
+  min-width: 0;
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-/* Seta verde visual. */
 .arrow-v {
-  color: var(--color-light-green);
-  font-size: 24px;
-  font-weight: 700; /* Negrito. */
+  display: none;
 }
 
-/* Título do item. */
 .title {
   color: var(--color-text);
   font-size: 20px;
-  font-weight: 700; /* Negrito. */
+  font-weight: bold;
 }
 
-/* Subtítulo do item. */
 .subtitle {
   color: var(--color-text-secondary);
   font-size: 15px;
 }
 
-/* Controles pequenos das listas. */
+/* Controles das listas. */
 .badge,
 .btn-action,
 .lesson-link,
 .lesson-btn {
   min-width: 136px;
-  min-height: 42px;
-  display: inline-flex; /* Centraliza o conteúdo. */
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 8px 18px;
-  border: 0; /* Remove a borda. */
+  min-height: 50px;
+  display: inline-block;
+  padding: 15px 18px;
+  border: 1px solid transparent; /* Cria uma borda invisível para o botão não mudar de tamanho quando a borda verde aparecer. */
   border-radius: 8px;
   background: var(--color-control);
   color: var(--color-text);
   font-size: 15px;
-  font-weight: 700; /* Negrito. */
+  font-weight: bold;
+  text-align: center;
 }
 
-/* Grupo de ações da aula. */
 .item-actions {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 12px;
-  flex-shrink: 0; /* Evita encolher demais. */
+  min-width: 250px;
 }
 
-/* Link para abrir aula. */
 .lesson-link {
   min-width: 112px;
   background: #173c25;
 }
 
-/* Hover dos controles. */
 .badge:hover,
 .btn-action:hover,
 .lesson-link:hover,
 .lesson-btn:hover {
-  background: #173b21; /* Escurece no hover. */
+  background: #173b21;
 }
 
-/* Dificuldade fácil. */
 .badge-easy {
   color: var(--color-light-green);
 }
 
-/* Dificuldade média. */
 .badge-medium {
   color: var(--color-orange);
 }
 
-/* Dificuldade difícil. */
 .badge-hard {
   color: var(--color-red);
 }
 
-/* Botão de concluir aula. */
 .lesson-btn {
   min-width: 170px;
 }
 
-/* Estado concluído do botão. */
 .lesson-btn.is-completed {
   color: var(--color-light-green);
-  box-shadow: inset 0 0 0 1px rgba(0, 255, 102, 0.45); /* Borda interna verde. */
+  border-color: rgba(0, 255, 102, 0.45);
 }
 
-/* Check antes do texto concluído. */
 .lesson-btn.is-completed::before {
-  content: "\2713"; /* Adiciona símbolo de check. */
+  content: "✓ "; /* Adiciona o check antes do texto. */
 }
 
-/* Área da dashboard. */
+/* Dashboard. */
 .dashboard-content {
   max-width: 980px;
 }
 
-/* Título da dashboard. */
 .dashboard-title {
   margin-bottom: 40px;
 }
 
-/* Textos do título da dashboard. */
 .dashboard-title h1,
 .dashboard-title p {
-  margin: 0; /* Remove margens padrão. */
+  margin: 0;
   color: var(--color-text);
   font-size: 28px;
-  line-height: 1.25; /* Altura entre linhas. */
-  font-weight: 700; /* Negrito. */
+  font-weight: bold;
 }
 
-/* Grid da dashboard. */
 .dashboard-grid {
-  display: grid; /* Ativa grid. */
-  grid-template-columns: repeat(3, minmax(0, 1fr)); /* Cria três colunas. */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 34px 44px;
-  align-items: stretch; /* Deixa os cards com altura alinhada. */
 }
 
-/* Cards principais da dashboard. */
 .dashboard-grid .summary-card,
 .dashboard-line-card {
-  border: 0; /* Remove a borda. */
+  border: none;
   border-radius: 0;
   background: #062700;
 }
 
-/* Cards da dashboard. */
 .dashboard-grid .summary-card {
   min-height: 160px;
-  position: relative; /* Permite posicionar ícones internos. */
   padding: 24px 14px;
 }
 
-/* Títulos dos cards da dashboard. */
 .dashboard-grid .summary-card h2,
 .dashboard-line-card h2 {
   margin-bottom: 18px;
   font-size: 22px;
-  line-height: 1.2; /* Altura entre linhas. */
 }
 
-/* Card genérico. */
 .summary-card {
   min-height: 180px;
   padding: 24px;
@@ -943,300 +639,176 @@ button {
   background: var(--color-card);
 }
 
-/* Lista de aulas concluídas. */
 .check-list {
   display: flex;
-  flex-direction: column; /* Empilha itens. */
+  flex-direction: column;
   gap: 4px;
-  margin-left: 0; /* Remove o recuo da lista. */
-  list-style: none; /* Remove as bolinhas. */
+  margin-left: 0;
+  list-style: none; /* Remove os marcadores padrão da lista, como as bolinhas. */
   color: var(--color-text);
-  font-size: 22px;
-  font-weight: 700; /* Negrito. */
+  font-size: 17px;
+  font-weight: bold;
 }
 
-/* Item da lista de concluídas. */
 .check-list li {
   color: var(--color-text);
 }
 
-
-
-/* Número da aula. */
 .lesson-number {
-  display: inline-block; /* Permite usar margem. */
+  display: block;
   margin-bottom: 10px;
   color: var(--color-text);
   font-size: 22px;
-  font-weight: 700; /* Negrito. */
+  font-weight: bold;
 }
 
-/* Texto dos cards de próxima aula e continuar. */
 .summary-card--next p,
 .summary-card--continue p {
   color: var(--color-text);
-  font-weight: 700; /* Negrito. */
+  font-weight: bold;
 }
 
-/* Links de ícone da dashboard. */
 .dashboard-icon-link,
 .dashboard-arrow-link {
-  position: absolute; /* Posiciona dentro do card. */
-  color: var(--color-text);
-  font-size: 30px;
-  font-weight: 700; /* Negrito. */
+  display: none;
 }
 
-/* Botão circular com mais. */
-.dashboard-icon-link {
-  left: 42px; /* Distância da esquerda. */
-  bottom: 30px; /* Distância de baixo. */
-  width: 28px;
-  height: 28px;
-  display: grid; /* Centraliza o símbolo de mais. */
-  place-items: center; /* Centraliza horizontal e verticalmente. */
-  border: 2px solid var(--color-text);
-  border-radius: 50%;
-  font-size: 24px;
-}
-
-/* Seta do card de próxima aula. */
-.dashboard-arrow-link {
-  right: 32px; /* Distância da direita. */
-  bottom: 29px; /* Distância de baixo. */
-}
-
-/* Círculo de progresso. */
-.progress-ring {
-  --progress-percent: 0%; /* Valor inicial do progresso. */
-  width: 96px;
-  height: 96px;
-  display: grid; /* Centraliza o conteúdo. */
-  place-items: center; /* Centraliza o texto. */
-  margin: 6px auto 0; /* Centraliza no card. */
-  border-radius: 50%;
-  background: conic-gradient(#00dd16 0 var(--progress-percent), #d9d9d9 var(--progress-percent) 100%); /* Cria gráfico circular. */
-}
-
-/* Centro do círculo de progresso. */
-.progress-ring span {
-  width: 56px;
-  height: 56px;
-  display: grid; /* Centraliza a porcentagem. */
-  place-items: center; /* Centraliza o texto. */
-  border-radius: 50%;
-  background: #062700; /* Fundo igual ao card. */
-  color: #000000; /* Texto preto. */
-  font-size: 24px;
-  font-weight: 800; /* Bem negrito. */
-}
-
-/* Botão do card continue aprendendo. */
 .summary-card--continue .btn-secondary {
-  width: 165px; /* Largura fixa. */
-  min-height: 38px; /* Altura menor. */
-  margin-top: 18px; /* Espaço acima. */
-  border-radius: 0; /* Cantos retos. */
-  background: #0d3f04; /* Verde escuro. */
-  text-transform: lowercase; /* Texto minúsculo. */
+  width: 165px;
+  margin-top: 18px;
+  border-radius: 0;
+  background: #0d3f04;
 }
 
-/* Card do gráfico de linha. */
 .dashboard-line-card {
-  grid-column: span 2; /* Ocupa duas colunas. */
-  min-height: 192px;
-  padding: 24px 28px 10px;
-  background: #1d1d1f; /* Fundo escuro do gráfico. */
+  grid-column: span 2;
+  min-height: 200px;
+  padding: 24px 28px 10px;  
+  background: #1d1d1f;
 }
 
-/* Título do gráfico. */
 .dashboard-line-card h2 {
   font-size: 16px;
 }
 
-/* Área do gráfico. */
 .dashboard-line-chart {
-  position: relative; /* Permite posicionar percentuais. */
-  min-height: 140px;
-  padding: 8px 0 0 42px; /* Espaço para labels da esquerda. */
-}
-
-/* SVG do gráfico. */
-.dashboard-line-chart svg {
   width: 100%;
-  height: 118px;
-  display: block; /* Remove espaçamento inline. */
+  height: 150px;
+  padding: 0;
 }
 
-/* Pontos do gráfico. */
-.dashboard-line-chart circle {
-  fill: #39d129; /* Cor verde dos pontos. */
+.dashboard-line-chart canvas {
+  width: 100%;
+  height: 100%;
 }
 
-/* Percentuais laterais do gráfico. */
-.chart-percent {
-  position: absolute; /* Posiciona dentro do gráfico. */
-  left: 0; /* Alinha à esquerda. */
-  color: #cfcfcf; /* Cinza claro. */
-  font-size: 11px;
+.dashboard-pie-area {
+  width: 100%;
+  height: 110px;
 }
 
-/* Posição do 100%. */
-.chart-percent--100 {
-  top: 6px; /* Altura do label. */
-}
-
-/* Posição do 75%. */
-.chart-percent--75 {
-  top: 32px; /* Altura do label. */
-}
-
-/* Posição do 50%. */
-.chart-percent--50 {
-  top: 59px; /* Altura do label. */
-}
-
-/* Posição do 25%. */
-.chart-percent--25 {
-  top: 86px; /* Altura do label. */
-}
-
-/* Posição do 0%. */
-.chart-percent--0 {
-  top: 112px; /* Altura do label. */
-}
-
-/* Labels das semanas. */
-.chart-labels {
-  display: grid; /* Distribui labels. */
-  grid-template-columns: repeat(5, 1fr); /* Cria cinco colunas. */
-  gap: 8px;
-  padding-left: 20px;
-  color: #cfcfcf;
-  font-size: 11px;
-}
-
-/* Layout da página sobre. */
 .about-layout {
-  position: relative; /* Permite imagem decorativa absoluta. */
-  overflow: hidden; /* Esconde excesso da imagem. */
+  position: relative;
 }
 
-/* Bloco de texto da página sobre. */
 .about-text {
-  width: min(100%, 650px); /* Largura máxima. */
+  width: 100%;
+  max-width: 650px;
   padding: 36px;
-  border: 1px solid var(--color-border); /* Borda discreta. */
+  border: 1px solid var(--color-border);
   border-radius: 8px;
   background: var(--color-list);
   font-size: 15px;
 }
 
-/* Parágrafos da página sobre. */
 .about-text p {
   margin-bottom: 18px;
 }
 
-/* Imagem decorativa da página sobre. */
 .decorative-img {
-  position: absolute; /* Posiciona livremente. */
-  right: 50px; /* Distância da direita. */
-  bottom: 0; /* Encosta embaixo. */
-  width: min(32vw, 350px); /* Tamanho simples com limite máximo. */
-  aspect-ratio: 1 / 1.25; /* Mantém proporção. */
-  z-index: 0; /* Fica atrás do texto. */
-  pointer-events: none; /* Não atrapalha cliques. */
+  position: absolute;
+  right: 50px;
+  bottom: 0;
+  width: 350px;
+  height: 440px;
+  z-index: 0;
   background-image: var(--image-about);
-  background-position: center bottom; /* Alinha imagem embaixo. */
-  background-repeat: no-repeat; /* Não repete. */
-  background-size: contain; /* Mostra inteira. */
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
-/* Conteúdo da página sobre acima da imagem. */
 .about-layout .content {
-  position: relative; /* Cria camada. */
-  z-index: 1; /* Fica acima da imagem. */
+  position: relative;
+  z-index: 1;
 }
 
 /* Fundo da página calculadora. */
 .calculator-layout {
-  background: linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72)), var(--image-setup-background), #000000; /* Fundo com imagem e camada escura. */
-  background-position: center; /* Centraliza o fundo. */
-  background-repeat: no-repeat; /* Não repete. */
-  background-size: cover; /* Cobre a tela. */
+  background:var(--image-setup-background);
+  background-position: center;
+  background-size: cover;
 }
 
-/* Grid da calculadora. */
 .calculator-grid {
-  width: min(100%, 950px); /* Largura máxima. */
-  display: grid; /* Ativa grid. */
-  grid-template-columns: minmax(280px, 430px) minmax(280px, 1fr); /* Duas colunas. */
+  width: 100%;
+  max-width: 950px;
+  display: grid;
+  grid-template-columns: 430px 1fr;
   gap: 24px;
-  align-items: start; /* Alinha pelo topo. */
+  align-items: flex-start; 
 }
 
-/* Card da calculadora. */
 .calculator-card {
   padding: 30px;
-  border: 1px solid var(--color-border); /* Borda discreta. */
+  border: 1px solid var(--color-border);
   border-radius: 24px;
   background: var(--color-list);
 }
 
-/* Título do card da calculadora. */
 .calculator-card h2 {
   margin-bottom: 20px;
   font-size: 22px;
 }
 
-/* Grupo de campo da calculadora. */
 .calculator-form-group {
-  display: flex;
-  flex-direction: column; /* Label e input em coluna. */
-  gap: 8px;
   margin-bottom: 16px;
 }
 
-/* Texto do campo. */
 .calculator-form-group p {
+  margin-bottom: 8px;
   color: var(--color-text);
   font-size: 14px;
-  font-weight: 700; /* Negrito. */
+  font-weight: bold;
 }
 
-/* Inputs e selects da calculadora. */
 .calculator-form-group input,
 .calculator-form-group select {
   width: 100%;
-  min-height: 44px;
+  min-height: 50px;
   padding: 0 12px;
-  border: 0; /* Remove a borda. */
+  border: 2px solid transparent; /* Deixa uma borda invisível para ela só mudar de cor no focus. */
   border-radius: 8px;
-  outline: 0; /* Remove o contorno padrão. */
   background: #dddddd;
   color: #000000;
 }
 
-/* Campo selecionado na calculadora. */
 .calculator-form-group input:focus,
 .calculator-form-group select:focus {
-  box-shadow: 0 0 0 2px var(--color-main-green); /* Destaque verde. */
+  border-color: var(--color-main-green);
 }
 
-/* Botão da calculadora. */
 .calculator-card .btn-primary {
   width: 100%;
   margin-top: 8px;
 }
 
-/* Lista de itens salvos na calculadora. */
 .calculator-items {
   display: flex;
-  flex-direction: column; /* Empilha itens. */
+  flex-direction: column;
   gap: 12px;
 }
 
-/* Item salvo da calculadora. */
 .calculator-item {
   display: flex;
   align-items: center;
@@ -1247,37 +819,32 @@ button {
   background: rgba(255, 255, 255, 0.06);
 }
 
-/* Bloco de informações do item salvo na calculadora. */
 .calculator-item-info {
   display: flex;
-  flex-direction: column; /* Empilha textos. */
+  flex-direction: column;
   gap: 4px;
 }
 
-/* Textos secundários do item salvo. */
 .calculator-item span,
 .calculator-item p {
   color: var(--color-text-secondary);
 }
 
-/* Botões editar/remover. */
 .calculator-item-actions {
   display: flex;
   gap: 10px;
 }
 
-/* Botão editar/remover. */
 .calculator-item-actions button {
-  min-height: 38px;
+  min-height: 40px;
   padding: 0 14px;
-  border: 0; /* Remove a borda. */
+  border: none;
   border-radius: 8px;
   background: var(--color-control);
   color: var(--color-text);
-  font-weight: 700; /* Negrito. */
+  font-weight: bold;
 }
 
-/* Total da calculadora. */
 .calculator-total {
   display: flex;
   align-items: center;
@@ -1285,39 +852,40 @@ button {
   gap: 18px;
   margin-top: 24px;
   padding-top: 18px;
-  border-top: 1px solid var(--color-border); /* Linha divisória. */
+  border-top: 1px solid var(--color-border); 
 }
 
-/* Texto do total. */
 .calculator-total span {
   color: var(--color-text-secondary);
 }
 
-/* Valor total. */
 .calculator-total strong {
   color: var(--color-light-green);
   font-size: 24px;
 }
-/* Área do gráfico feito com Chart.js na dashboard. */
-.dashboard-chart-area {
-  width: 100%;
-  height: 140px;
+
+.btn-remover {
+  min-width: 100px;
+  min-height: 42px;
+  flex-shrink: 0;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 77, 77, 0.55);
+  border-radius: 8px;
+  background: rgba(255, 77, 77, 0.12);
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: bold;
+  transition: 0.2s;
 }
 
-.dashboard-chart-area canvas {
-  width: 100%;
-  height: 100%;
+.btn-remover:hover {
+  background: var(--color-red);
+  border-color: var(--color-red);
+  color: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(255, 77, 77, 0.25);
 }
-/* Área do gráfico de pizza da dashboard. */
-.dashboard-pie-area {
-  width: 100%;
-  height: 110px;
-}
-.dashboard-icon-link,
-.dashboard-arrow-link {
-  display: none;
-}
-/* Esconde a seta antes do título das aulas. */
-.arrow-v {
-  display: none;
-}
+
+
+
+
