@@ -8,7 +8,7 @@
 <script src="js/sessao.js"></script>
 </head>
 
-<body onload="validarSessao(), carregarAulasConcluidas()">
+<body onload="validarSessao(); carregarAulasConcluidas()">
 <nav class="navbar navbar--mini">
 <a class="logo" href="dashboard.html">
 <span class="logo-image"></span>
@@ -51,7 +51,7 @@
 
 <div class="item-actions">
 <a class="lesson-link" href="#">Abrir aula</a>
-<button class="lesson-btn" type="button" data-lesson-id="1" onclick="marcarAula(this)">Marcar concluído</button>
+<button id="btn_aula_1" class="lesson-btn" type="button" onclick="marcarAula(1)">Marcar concluído</button>
 </div>
 </article>
 
@@ -63,7 +63,7 @@
 
 <div class="item-actions">
 <a class="lesson-link" href="#">Abrir aula</a>
-<button class="lesson-btn" type="button" data-lesson-id="2" onclick="marcarAula(this)">Marcar concluído</button>
+<button id="btn_aula_2" class="lesson-btn" type="button" onclick="marcarAula(2)">Marcar concluído</button>
 </div>
 </article>
 
@@ -75,7 +75,7 @@
 
 <div class="item-actions">
 <a class="lesson-link" href="#">Abrir aula</a>
-<button class="lesson-btn" type="button" data-lesson-id="3" onclick="marcarAula(this)">Marcar concluído</button>
+<button id="btn_aula_3" class="lesson-btn" type="button" onclick="marcarAula(3)">Marcar concluído</button>
 </div>
 </article>
 
@@ -87,7 +87,7 @@
 
 <div class="item-actions">
 <a class="lesson-link" href="#">Abrir aula</a>
-<button class="lesson-btn" type="button" data-lesson-id="4" onclick="marcarAula(this)">Marcar concluído</button>
+<button id="btn_aula_4" class="lesson-btn" type="button" onclick="marcarAula(4)">Marcar concluído</button>
 </div>
 </article>
 
@@ -99,14 +99,12 @@
 
 <div class="item-actions">
 <a class="lesson-link" href="#">Abrir aula</a>
-<button class="lesson-btn" type="button" data-lesson-id="5" onclick="marcarAula(this)">Marcar concluído</button>
+<button id="btn_aula_5" class="lesson-btn" type="button" onclick="marcarAula(5)">Marcar concluído</button>
 </div>
 </article>
 </div>
 </main>
 </div>
-</body>
-</html>
 
 <script>
 function carregarAulasConcluidas() {
@@ -123,10 +121,10 @@ if (resposta.ok) {
 resposta.json().then(function (lista) {
 for (var i = 0; i < lista.length; i++) {
 var idAula = lista[i].id;
-var botao = document.querySelector(`[data-lesson-id="${idAula}"]`);
+var botao = document.getElementById("btn_aula_" + idAula);
 
 if (botao != null) {
-botao.classList.add("is-completed");
+botao.className = "lesson-btn is-completed";
 botao.innerHTML = "Concluído";
 }
 }
@@ -138,9 +136,9 @@ console.log("Erro ao carregar aulas concluídas: " + erro);
 });
 }
 
-function marcarAula(botao) {
+function marcarAula(idAula) {
 var idUsuario = sessionStorage.ID_USUARIO;
-var idAula = botao.getAttribute("data-lesson-id");
+var botao = document.getElementById("btn_aula_" + idAula);
 
 if (idUsuario == undefined) {
 alert("Usuário não encontrado. Faça login novamente.");
@@ -148,13 +146,13 @@ window.location = "login.html";
 return;
 }
 
-if (botao.classList.contains("is-completed")) {
+if (botao.innerHTML == "Concluído") {
 fetch(`/aula/desconcluir/${idUsuario}/${idAula}`, {
-method: "DELETE"
+method: "POST"
 })
 .then(function (resposta) {
 if (resposta.ok) {
-botao.classList.remove("is-completed");
+botao.className = "lesson-btn";
 botao.innerHTML = "Marcar concluído";
 } else {
 alert("Erro ao desmarcar aula.");
@@ -176,7 +174,7 @@ idAula: idAula
 })
 .then(function (resposta) {
 if (resposta.ok) {
-botao.classList.add("is-completed");
+botao.className = "lesson-btn is-completed";
 botao.innerHTML = "Concluído";
 } else {
 alert("Erro ao marcar aula como concluída.");
@@ -188,3 +186,5 @@ console.log("Erro ao concluir aula: " + erro);
 }
 }
 </script>
+</body>
+</html>
