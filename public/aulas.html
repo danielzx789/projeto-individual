@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Todas as aulas - Next Fret</title>
+<link rel="stylesheet" href="style.css">
+<script src="js/sessao.js"></script>
+</head>
+
+<body onload="validarSessao(); carregarAulasConcluidas()">
+<nav class="navbar navbar--mini">
+<a class="logo" href="dashboard.html">
+<span class="logo-image"></span>
+<span class="logo-text">Next Fret</span>
+</a>
+
+<div class="navbar-links">
+<a href="sobre.html">Sobre nós</a>
+<a class="active" href="aulas.html">Aulas</a>
+<a href="setup.html">Equipamentos</a>
+</div>
+</nav>
+
+<div class="dashboard-container">
+<aside class="sidebar">
+<nav class="menu-lateral">
+<a href="dashboard.html">Resumo</a>
+<a class="active" href="aulas.html">Aulas</a>
+<a href="musicas.html">Músicas</a>
+<a href="materiais.html">Materiais</a>
+<a href="setup.html">Setup</a>
+<a href="#" onclick="limparSessao()">Sair</a>
+
+<div class="user-block">
+<span class="user-avatar">D</span>
+<span id="b_usuario">Daniel</span>
+</div>
+</nav>
+</aside>
+
+<main class="content">
+<h1>Todas as aulas</h1>
+
+<div class="list">
+<article class="item-bar">
+<div class="item-info-row">
+<span class="arrow-v">&gt;</span>
+<span class="title">Aula 1 - Primeiros acordes e ritmo</span>
+</div>
+
+<div class="item-actions">
+<a class="lesson-link" href="#">Abrir aula</a>
+<button id="btn_aula_1" class="lesson-btn" type="button" onclick="marcarAula(1)">Marcar concluído</button>
+</div>
+</article>
+
+<article class="item-bar">
+<div class="item-info-row">
+<span class="arrow-v">&gt;</span>
+<span class="title">Aula 2 - Mudança de acordes</span>
+</div>
+
+<div class="item-actions">
+<a class="lesson-link" href="#">Abrir aula</a>
+<button id="btn_aula_2" class="lesson-btn" type="button" onclick="marcarAula(2)">Marcar concluído</button>
+</div>
+</article>
+
+<article class="item-bar">
+<div class="item-info-row">
+<span class="arrow-v">&gt;</span>
+<span class="title">Aula 3 - Primeira música</span>
+</div>
+
+<div class="item-actions">
+<a class="lesson-link" href="#">Abrir aula</a>
+<button id="btn_aula_3" class="lesson-btn" type="button" onclick="marcarAula(3)">Marcar concluído</button>
+</div>
+</article>
+
+<article class="item-bar">
+<div class="item-info-row">
+<span class="arrow-v">&gt;</span>
+<span class="title">Aula 4 - Acordes básicos parte 2</span>
+</div>
+
+<div class="item-actions">
+<a class="lesson-link" href="#">Abrir aula</a>
+<button id="btn_aula_4" class="lesson-btn" type="button" onclick="marcarAula(4)">Marcar concluído</button>
+</div>
+</article>
+
+<article class="item-bar">
+<div class="item-info-row">
+<span class="arrow-v">&gt;</span>
+<span class="title">Aula 5 - Batidas</span>
+</div>
+
+<div class="item-actions">
+<a class="lesson-link" href="#">Abrir aula</a>
+<button id="btn_aula_5" class="lesson-btn" type="button" onclick="marcarAula(5)">Marcar concluído</button>
+</div>
+</article>
+</div>
+</main>
+</div>
+
+<script>
+function carregarAulasConcluidas() {
+var idUsuario = sessionStorage.ID_USUARIO;
+var nomeUsuario = sessionStorage.NOME_USUARIO;
+
+if (nomeUsuario != undefined) {
+b_usuario.innerHTML = nomeUsuario;
+}
+
+fetch(`/aula/concluidas/${idUsuario}`)
+.then(function (resposta) {
+if (resposta.ok) {
+resposta.json().then(function (lista) {
+for (var i = 0; i < lista.length; i++) {
+var idAula = lista[i].id;
+var botao = document.getElementById("btn_aula_" + idAula);
+
+if (botao != null) {
+botao.className = "lesson-btn is-completed";
+botao.innerHTML = "Concluído";
+}
+}
+});
+}
+})
+.catch(function (erro) {
+console.log("Erro ao carregar aulas concluídas: " + erro);
+});
+}
+
+function marcarAula(idAula) {
+var idUsuario = sessionStorage.ID_USUARIO;
+var botao = document.getElementById("btn_aula_" + idAula);
+
+if (idUsuario == undefined) {
+alert("Usuário não encontrado. Faça login novamente.");
+window.location = "login.html";
+return;
+}
+
+if (botao.innerHTML == "Concluído") {
+fetch(`/aula/desconcluir/${idUsuario}/${idAula}`, {
+method: "POST"
+})
+.then(function (resposta) {
+if (resposta.ok) {
+botao.className = "lesson-btn";
+botao.innerHTML = "Marcar concluído";
+} else {
+alert("Erro ao desmarcar aula.");
+}
+})
+.catch(function (erro) {
+console.log("Erro ao desmarcar aula: " + erro);
+});
+} else {
+fetch("/aula/concluir", {
+method: "POST",
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify({
+idUsuario: idUsuario,
+idAula: idAula
+})
+})
+.then(function (resposta) {
+if (resposta.ok) {
+botao.className = "lesson-btn is-completed";
+botao.innerHTML = "Concluído";
+} else {
+alert("Erro ao marcar aula como concluída.");
+}
+})
+.catch(function (erro) {
+console.log("Erro ao concluir aula: " + erro);
+});
+}
+}
+</script>
+</body>
+</html>
